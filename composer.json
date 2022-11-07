@@ -1,0 +1,10 @@
+{
+    "name": "cimple-admin/forms",
+    "description": "form builder for laravel",
+    "autoload": {
+        "psr-4": {
+            "CimpleAdmin\\Forms\\": "src/"
+        }
+    },
+    "require": {}
+}
