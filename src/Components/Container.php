@@ -13,8 +13,12 @@ class Container implements Htmlable
         $this->forms = $forms;
     }
 
-    public static function make($forms): Container
+    public static function make($formBuilders): Container
     {
+        $forms = [];
+        foreach ($formBuilders as $builder) {
+            $forms[$builder::COMPONENT_NAME] = $builder->build();
+        }
         return new Self($forms);
     }
 
