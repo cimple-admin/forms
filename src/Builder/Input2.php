@@ -11,6 +11,7 @@ class Input2
     private $label;
     private $name;
     private $rules = [];
+    private $property;
 
     // 初始的构造函数
     public static function make($type = 'text'): static
@@ -46,12 +47,20 @@ class Input2
         return $this;
     }
 
-    public function build() {
+    public function bindProperty($propertyName)
+    {
+        $this->property = $propertyName;
+        return $this;
+    }
+
+    public function build(): array
+    {
         return [
             'type' => $this->type,
             'name' => $this->name,
             'label' => $this->label,
             'rules' => $this->rules,
+            'property' => $this->property,
         ];
     }
 }

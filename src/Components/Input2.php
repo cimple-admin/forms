@@ -13,19 +13,23 @@ class Input2 extends Component
     public $type;
     public $label;
     public $name;
-
+    public $property;
     public $customRules;
-    public function mount($type, $name, $label, $rules)
+    public function mount($type, $name, $label, $rules, $property)
     {
         $this->type = $type;
         $this->name = $name;
         $this->label = $label;
         $this->customRules = serialize($rules);
+        $this->property = $property;
     }
+
 
     public function updated($propertyName)
     {
+        $this->emitUp('update' . $this->property, $this->message);
         $this->validateOnly($propertyName);
+
     }
 
     public function rules()
