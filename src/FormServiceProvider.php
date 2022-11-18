@@ -14,6 +14,4 @@ class FormServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'form');
         Livewire::component('input', Input::class);
     }
-
-
 }

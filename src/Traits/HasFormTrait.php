@@ -18,7 +18,9 @@ trait HasFormTrait
     }
 
     public function updateEvent($name, $value) {
-        $this->$name = $value;
+        if (property_exists($this, $name) ) {
+            $this->$name = $value;
+        }
     }
 
     protected function getListeners()
