@@ -29,7 +29,6 @@ class Input2 extends Component
     {
         $this->emitUp('update' . $this->property, $this->message);
         $this->validateOnly($propertyName);
-
     }
 
     public function rules()
