@@ -2,56 +2,45 @@
 
 namespace CimpleAdmin\Forms\Components;
 
-// 输入表单组件
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Validation\Rules\Password;
 use Livewire\Component;
 
 class Input extends Component
 {
-   public $type;
-   public $label;
-   public $name;
-
-   public $rules;
-
-   public $value;
-
-    // 初始的构造函数
-    public static function make($type = 'text'): static
+    public $message;
+    public $type;
+    public $label;
+    public $name;
+    public $property;
+    public $customRules;
+    public function mount($type, $name, $label, $rules, $property)
     {
-        $instance = new Static();
-        $instance->type = $type;
-        return $instance;
-    }
-
-    public function label($label): static
-    {
-        $this->label = $label;
-        $this->name = $label;
-        return $this;
-    }
-
-    public function name($name): static
-    {
+        $this->type = $type;
         $this->name = $name;
-        return $this;
+        $this->label = $label;
+        $this->customRules = serialize($rules);
+        $this->property = $property;
     }
 
-    public function required(): static
+
+    public function updated($propertyName)
     {
-        $this->rules[] = 'required';
-        return $this;
+        $this->emitUp('updateEvent', $this->property, $this->message);
+        $this->validateOnly($propertyName);
     }
 
-    public function rules(): array
+    public function rules()
     {
-        return $this->rules;
+        return [
+            'message' => unserialize($this->customRules),
+        ];
     }
 
-    public function passwordMin($length): static
+    public static function make(): static
     {
-        $this->rules[] = Password::min($length);
-        return $this;
+        return new Static;
     }
 
     public function render()

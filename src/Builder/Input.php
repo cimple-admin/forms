@@ -4,9 +4,9 @@ namespace CimpleAdmin\Forms\Builder;
 
 use Illuminate\Validation\Rules\Password;
 
-class Input2
+class Input
 {
-    const COMPONENT_NAME = 'input2';
+    const COMPONENT_NAME = 'input';
     private $type;
     private $label;
     private $name;
