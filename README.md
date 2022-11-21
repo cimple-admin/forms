@@ -35,7 +35,7 @@
 public function getForm()
 {
     return [
-        Input::make('password')->name('Password')->required()->passwordMin(10),
+        Input::make('password')->label('Password')->required()->passwordMin(10),
     ];
 }
 ```
