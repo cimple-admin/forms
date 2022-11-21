@@ -2,22 +2,23 @@
 
 namespace CimpleAdmin\Forms\Builder;
 
-use Illuminate\Validation\Rules\Password;
-
-class Input
+class TextInput extends Component
 {
     const COMPONENT_NAME = 'input';
-    private string $type = '';
+    private string $type = 'text';
     private string $label = '';
     private array $rules = [];
     private string $property = '';
 
-    // 初始的构造函数
-    public static function make($type = 'text'): static
+    public function __construct($property)
     {
-        $instance = new Static();
-        $instance->type = $type;
-        return $instance;
+        $this->property = $property;
+        $this->label = $property;
+    }
+
+    public static function make($property): TextInput
+    {
+        return new self($property);
     }
 
     public function label($label): static
@@ -32,16 +33,8 @@ class Input
         return $this;
     }
 
-
-    public function passwordMin($length): static
-    {
-        $this->rules[] = Password::min($length);
-        return $this;
-    }
-
-    public function bindProperty($propertyName): static
-    {
-        $this->property = $propertyName;
+    public function email($validator = 'rfc'): static {
+        $this->rules[] = 'email:' . $validator;
         return $this;
     }
 

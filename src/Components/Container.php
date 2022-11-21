@@ -2,11 +2,12 @@
 
 namespace CimpleAdmin\Forms\Components;
 
+use CimpleAdmin\Forms\Builder\Component;
 use Illuminate\Contracts\Support\Htmlable;
 
 class Container implements Htmlable
 {
-    private $forms;
+    private array $forms;
 
     public function __construct($forms)
     {
@@ -16,6 +17,9 @@ class Container implements Htmlable
     public static function make($formBuilders): Container
     {
         $forms = [];
+        /**
+         * @var $formBuilders Component[]
+         */
         foreach ($formBuilders as $builder) {
             $forms[$builder::COMPONENT_NAME] = $builder->build();
         }
