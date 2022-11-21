@@ -12,7 +12,8 @@
 2. 安装后就可以使用 `artisan make:livewire` 命令来创建自己的组件了。
 3. ![img.png](img.png)
    实现 `HasForm` 接口，引入 `HasFormTrait`。只需实现一个方法 `getForm`
-4. ```php
+4. 这个方法返回了，一批表单组件。
+```php
 public function getForm()
 {
     return [
@@ -20,7 +21,7 @@ public function getForm()
     ];
 }
 ```
-这个方法返回了，一批表单组件。
+
 
 
 ### 更多说明
