@@ -10,8 +10,9 @@
 #### 在新项目中安装
 1. 创建 laravel 项目后，安装扩展 `composer require cimple-admin/forms`
 2. 安装后就可以使用 `artisan make:livewire` 命令来创建自己的组件了。
-3. ![img.png](img.png)
-   实现 `HasForm` 接口，引入 `HasFormTrait`。只需实现一个方法 `getForm`
+3. 实现 `HasForm` 接口，引入 `HasFormTrait`。只需实现一个方法 `getForm`
+   ![img.png](img.png)
+   
 4. 这个方法返回了，一批表单组件。
 ```php
 public function getForm()
