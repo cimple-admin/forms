@@ -2,12 +2,15 @@
 
 namespace CimpleAdmin\Forms\Builder;
 
+use CimpleAdmin\Forms\Traits\Validation;
+
 class TextInput extends Component
 {
+    use Validation;
+
     const COMPONENT_NAME = 'input';
     private string $type = 'text';
     private string $label = '';
-    private array $rules = [];
     private string $property = '';
 
     public function __construct($property)
@@ -24,17 +27,6 @@ class TextInput extends Component
     public function label($label): static
     {
         $this->label = $label;
-        return $this;
-    }
-
-    public function required(): static
-    {
-        $this->rules[] = 'required';
-        return $this;
-    }
-
-    public function email($validator = 'rfc'): static {
-        $this->rules[] = 'email:' . $validator;
         return $this;
     }
 
