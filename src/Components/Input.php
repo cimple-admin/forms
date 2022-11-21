@@ -9,16 +9,14 @@ use Livewire\Component;
 
 class Input extends Component
 {
-    public $message;
-    public $type;
-    public $label;
-    public $name;
+    public $value; // Input 的输入值
+    public $type; // Input 类型
+    public $label; // Input 表单名称
     public $property;
     public $customRules;
-    public function mount($type, $name, $label, $rules, $property)
+    public function mount($type, $label = '', $rules = [], $property = '')
     {
         $this->type = $type;
-        $this->name = $name;
         $this->label = $label;
         $this->customRules = serialize($rules);
         $this->property = $property;
@@ -27,14 +25,16 @@ class Input extends Component
 
     public function updated($propertyName)
     {
-        $this->emitUp('updateEvent', $this->property, $this->message);
+        if ($this->property) {
+            $this->emitUp('updateEvent', $this->property, $this->value);
+        }
         $this->validateOnly($propertyName);
     }
 
     public function rules()
     {
         return [
-            'message' => unserialize($this->customRules),
+            'value' => unserialize($this->customRules),
         ];
     }
 

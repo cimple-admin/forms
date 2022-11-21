@@ -7,11 +7,10 @@ use Illuminate\Validation\Rules\Password;
 class Input
 {
     const COMPONENT_NAME = 'input';
-    private $type;
-    private $label;
-    private $name;
+    private $type = '';
+    private $label = '';
     private $rules = [];
-    private $property;
+    private $property = '';
 
     // 初始的构造函数
     public static function make($type = 'text'): static
@@ -24,13 +23,6 @@ class Input
     public function label($label): static
     {
         $this->label = $label;
-        $this->name = $label;
-        return $this;
-    }
-
-    public function name($name): static
-    {
-        $this->name = $name;
         return $this;
     }
 
@@ -57,10 +49,9 @@ class Input
     {
         return [
             'type' => $this->type,
-            'name' => $this->name,
-            'label' => $this->label,
             'rules' => $this->rules,
             'property' => $this->property,
+            'label' => $this->label,
         ];
     }
 }
