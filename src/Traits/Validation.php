@@ -7,7 +7,8 @@ trait Validation
     private array $rules = [];
 
     /**
-     * 必须输入数据
+     * 必须输入数据.
+     *
      * @return $this
      */
     public function required(): static
@@ -19,6 +20,7 @@ trait Validation
 
     /**
      * 输入的值，必须是 1  true on 这些值
+     *
      * @return $this
      */
     public function accept(): static
@@ -29,7 +31,8 @@ trait Validation
     }
 
     /**
-     * 必须是合法url
+     * 必须是合法url.
+     *
      * @return $this
      */
     public function activeUrl(): static
@@ -40,8 +43,10 @@ trait Validation
     }
 
     /**
-     * 邮箱格式
+     * 邮箱格式.
+     *
      * @param $validator
+     *
      * @return $this
      */
     public function email($validator = 'rfc'): static
@@ -52,7 +57,8 @@ trait Validation
     }
 
     /**
-     * 必须是字母
+     * 必须是字母.
+     *
      * @return $this
      */
     public function alpha(): static
@@ -63,8 +69,10 @@ trait Validation
     }
 
     /**
-     * 限定 size， 字符串，数字，字母都有不同的方案
-     * @param  int  $size
+     * 限定 size， 字符串，数字，字母都有不同的方案.
+     *
+     * @param int $size
+     *
      * @return $this
      */
     public function size(int $size): static
@@ -75,8 +83,10 @@ trait Validation
     }
 
     /**
-     * 自己输入规则，主要是弥补封装不全问题，比如不常用的就不会封装进去，自己通过这个方法补充即可
+     * 自己输入规则，主要是弥补封装不全问题，比如不常用的就不会封装进去，自己通过这个方法补充即可.
+     *
      * @param $rules
+     *
      * @return $this
      */
     public function rules($rules = []): static
