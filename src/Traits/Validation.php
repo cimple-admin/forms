@@ -9,11 +9,14 @@ trait Validation
     public function required(): static
     {
         $this->rules[] = 'required';
+
         return $this;
     }
 
-    public function email($validator = 'rfc'): static {
-        $this->rules[] = 'email:' . $validator;
+    public function email($validator = 'rfc'): static
+    {
+        $this->rules[] = 'email:'.$validator;
+
         return $this;
     }
 }

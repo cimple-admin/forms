@@ -6,5 +6,5 @@ abstract class Component
 {
     const COMPONENT_NAME = '';
 
-    public abstract function build();
+    abstract public function build();
 }

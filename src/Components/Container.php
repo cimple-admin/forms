@@ -23,7 +23,8 @@ class Container implements Htmlable
         foreach ($formBuilders as $builder) {
             $forms[$builder::COMPONENT_NAME] = $builder->build();
         }
-        return new Self($forms);
+
+        return new self($forms);
     }
 
     public function toHtml()
@@ -32,7 +33,8 @@ class Container implements Htmlable
         return $this->render();
     }
 
-    public function render() {
+    public function render()
+    {
         return view('form::container', [
             'forms' => $this->forms,
         ]);
