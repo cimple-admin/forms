@@ -21,6 +21,5 @@ abstract class Component
         return $this->property;
     }
 
-
     abstract public function build();
 }

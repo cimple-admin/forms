@@ -2,8 +2,6 @@
 
 namespace CimpleAdmin\Forms\Builder;
 
-use CimpleAdmin\Forms\Traits\Validation;
-
 class TextInput extends Component
 {
     const COMPONENT_NAME = 'input';
