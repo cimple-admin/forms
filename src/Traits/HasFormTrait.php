@@ -4,7 +4,6 @@ namespace CimpleAdmin\Forms\Traits;
 
 use CimpleAdmin\Forms\Components\Container;
 use Livewire\Exceptions\PropertyNotFoundException;
-use Livewire\Livewire;
 
 trait HasFormTrait
 {
@@ -19,7 +18,7 @@ trait HasFormTrait
 
     public function updateEvent($name, $value): void
     {
-        if (property_exists($this, $name) ) {
+        if (property_exists($this, $name)) {
             $this->$name = $value;
         }
     }
@@ -29,5 +28,5 @@ trait HasFormTrait
         return ['updateEvent' => 'updateEvent'];
     }
 
-    abstract  public function getForm();
+    abstract public function getForm();
 }

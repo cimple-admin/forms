@@ -2,9 +2,6 @@
 
 namespace CimpleAdmin\Forms\Components;
 
-use Illuminate\Contracts\Support\Htmlable;
-use Illuminate\Support\Facades\Blade;
-use Illuminate\Validation\Rules\Password;
 use Livewire\Component;
 
 class Input extends Component
@@ -14,6 +11,7 @@ class Input extends Component
     public string $label; // Input 表单名称
     public string $property = '';
     public string $customRules = '';
+
     public function mount($type, $label = '', $rules = [], $property = '')
     {
         $this->type = $type;
@@ -38,12 +36,13 @@ class Input extends Component
                 'value' => unserialize($this->customRules),
             ];
         }
+
         return $rules;
     }
 
     public static function make(): static
     {
-        return new Static;
+        return new static();
     }
 
     public function render()
