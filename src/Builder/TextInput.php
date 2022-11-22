@@ -6,16 +6,13 @@ use CimpleAdmin\Forms\Traits\Validation;
 
 class TextInput extends Component
 {
-    use Validation;
-
     const COMPONENT_NAME = 'input';
     private string $type = 'text';
     private string $label = '';
-    private string $property = '';
 
     public function __construct($property)
     {
-        $this->property = $property;
+        parent::__construct($property);
         $this->label = $property;
     }
 

@@ -4,7 +4,12 @@ namespace CimpleAdmin\Forms\Traits;
 
 trait Validation
 {
-    private array $rules = [];
+    protected array $rules = [];
+
+    public function getRules(): array
+    {
+        return $this->rules;
+    }
 
     /**
      * 必须输入数据.
