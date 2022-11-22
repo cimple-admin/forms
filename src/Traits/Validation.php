@@ -46,7 +46,7 @@ trait Validation
      */
     public function email($validator = 'rfc'): static
     {
-        $this->rules[] = 'email:' . $validator;
+        $this->rules[] = 'email:'.$validator;
 
         return $this;
     }
@@ -64,12 +64,12 @@ trait Validation
 
     /**
      * 限定 size， 字符串，数字，字母都有不同的方案
-     * @param int $size
+     * @param  int  $size
      * @return $this
      */
     public function size(int $size): static
     {
-        $this->rules[] = 'size:' . $size;
+        $this->rules[] = 'size:'.$size;
 
         return $this;
     }

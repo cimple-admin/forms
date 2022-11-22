@@ -52,10 +52,10 @@ class Input
     public function build(): array
     {
         return [
-            'type'     => $this->type,
-            'rules'    => $this->rules,
+            'type' => $this->type,
+            'rules' => $this->rules,
             'property' => $this->property,
-            'label'    => $this->label,
+            'label' => $this->label,
         ];
     }
 }
