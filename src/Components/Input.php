@@ -6,18 +6,20 @@ use Livewire\Component;
 
 class Input extends Component
 {
-    public string $value = ''; // Input 的输入值
-    public string $type; // Input 类型
-    public string $label; // Input 表单名称
-    public string $property = '';
-    public string $customRules = '';
+    public string   $value                = ''; // Input 的输入值
+    public string   $type                 = 'text'; // Input 类型
+    public string   $label                = ''; // Input 表单名称
+    public string   $property             = '';
+    public string   $customRules          = '';
+    protected array $validationAttributes = [];
 
     public function mount($type, $label = '', $rules = [], $property = '')
     {
-        $this->type = $type;
-        $this->label = $label;
-        $this->customRules = serialize($rules);
-        $this->property = $property;
+        $this->type                          = $type;
+        $this->label                         = $label;
+        $this->customRules                   = serialize($rules);
+        $this->property                      = $property;
+        $this->validationAttributes['value'] = $this->label;
     }
 
     public function updated($propertyName)
@@ -26,6 +28,11 @@ class Input extends Component
             $this->emitUp('updateEvent', $this->property, $this->value);
         }
         $this->validateOnly($propertyName);
+    }
+
+    protected function validationAttributes(): array
+    {
+        return ['value' => $this->label];
     }
 
     public function rules(): array

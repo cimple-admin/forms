@@ -50,10 +50,10 @@ trait Validation
     /**
      * 邮箱格式.
      *
-     * @param $validator
+     * @param  string  $validator
      * @return $this
      */
-    public function email($validator = 'rfc'): static
+    public function email(string $validator = 'rfc'): static
     {
         $this->rules[] = 'email:'.$validator;
 
@@ -68,6 +68,13 @@ trait Validation
     public function alpha(): static
     {
         $this->rules[] = 'alpha';
+
+        return $this;
+    }
+
+    public function alphaDash(): static
+    {
+        $this->rules[] = 'alpha_dash';
 
         return $this;
     }
@@ -88,13 +95,14 @@ trait Validation
     /**
      * 自己输入规则，主要是弥补封装不全问题，比如不常用的就不会封装进去，自己通过这个方法补充即可.
      *
-     * @param $rules
+     * @param  array  $rules
      * @return $this
      */
-    public function rules($rules = []): static
+    public function rules(array $rules = []): static
     {
         $this->rules = array_merge($this->rules, $rules);
 
         return $this;
     }
 }
+
