@@ -52,7 +52,6 @@ trait HasFormTrait
                 throw $e;
             }
 
-
             try {
                 $this->validate();
             } catch (ValidationException $e) {
@@ -69,7 +68,8 @@ trait HasFormTrait
     }
 
     /**
-     * 获取组件验证条件，从构造的组件中返回
+     * 获取组件验证条件，从构造的组件中返回.
+     *
      * @return array
      */
     public function rules(): array
