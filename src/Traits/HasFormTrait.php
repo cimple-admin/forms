@@ -4,10 +4,13 @@ namespace CimpleAdmin\Forms\Traits;
 
 use CimpleAdmin\Forms\Builder\Component;
 use CimpleAdmin\Forms\Components\Container;
+use Illuminate\Validation\ValidationException;
 use Livewire\Exceptions\PropertyNotFoundException;
 
 trait HasFormTrait
 {
+    public bool $disableSubmitBtn = true;
+
     /**
      * @throws PropertyNotFoundException
      */
@@ -27,7 +30,21 @@ trait HasFormTrait
     {
         if (property_exists($this, $name)) {
             $this->$name = $value;
-            $this->validateOnly($name);
+            try {
+                $this->validateOnly($name);
+            } catch (ValidationException $e) {
+                $this->disableSubmitBtn = true;
+                throw $e;
+            }
+
+
+            try {
+                $this->validate();
+            } catch (ValidationException $e) {
+                $this->disableSubmitBtn = true;
+            }
+
+            $this->disableSubmitBtn = false;
         }
     }
 
@@ -36,7 +53,11 @@ trait HasFormTrait
         return ['updateEvent' => 'updateEvent'];
     }
 
-    public function rules()
+    /**
+     * 获取组件验证条件，从构造的组件中返回
+     * @return array
+     */
+    public function rules(): array
     {
         $rules = [];
         /**
