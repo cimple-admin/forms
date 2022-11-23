@@ -1,6 +1,7 @@
 {
     "name": "cimple-admin/forms",
     "description": "form builder for laravel",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "CimpleAdmin\\Forms\\": "src/"
