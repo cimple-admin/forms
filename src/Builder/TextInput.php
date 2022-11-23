@@ -14,7 +14,7 @@ class TextInput extends Component
         $this->label = $property;
     }
 
-    public static function make($property): TextInput
+    public static function make($property): self
     {
         return new self($property);
     }

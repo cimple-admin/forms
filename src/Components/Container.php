@@ -14,7 +14,7 @@ class Container implements Htmlable
         $this->forms = $forms;
     }
 
-    public static function make($formBuilders): Container
+    public static function make($formBuilders): self
     {
         $forms = [];
         /**
