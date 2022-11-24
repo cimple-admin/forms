@@ -19,12 +19,12 @@ abstract class Component
         $this->property = $property;
     }
 
-    public function getProperty()
+    public function getProperty(): string
     {
         return $this->property;
     }
 
-    public function getLable()
+    public function getLable(): string
     {
         return $this->label;
     }
@@ -36,9 +36,9 @@ abstract class Component
         return $this;
     }
 
-    public function hint($hint)
+    public function hint($hint): static
     {
-        $this->hint = $hint;
+        $this->hint= $hint;
 
         return $this;
     }
