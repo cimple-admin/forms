@@ -6,6 +6,8 @@
 
 ### 如何使用
 > 项目目前还处于开发期，变动会很大，不建议在生产环境中使用。
+> 
+> 使用本扩展需要对 [livewire](https://laravel-livewire.com/) 有足够的了解。
 
 #### 在新项目中安装
 1. 创建 laravel 项目后，安装扩展 `composer require cimple-admin/forms`
