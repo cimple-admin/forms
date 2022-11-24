@@ -14,13 +14,14 @@ class TextInput extends Component
     public string $hint = '';
     protected array $validationAttributes = [];
 
-    public function mount($type, $label = '', $rules = [], $property = '')
+    public function mount($type, $label = '', $rules = [], $property = '', $hint = '')
     {
         $this->type = $type;
         $this->label = $label;
         $this->customRules = serialize($rules);
         $this->property = $property;
         $this->validationAttributes['value'] = $this->label;
+        $this->hint = $hint;
     }
 
     public function updated($propertyName)

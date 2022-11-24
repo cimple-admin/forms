@@ -18,12 +18,7 @@ class TextInput extends Component
         return new self($property);
     }
 
-    public function label($label): static
-    {
-        $this->label = $label;
 
-        return $this;
-    }
 
     public function build(): array
     {
@@ -32,6 +27,7 @@ class TextInput extends Component
             'rules' => $this->rules,
             'property' => $this->property,
             'label' => $this->label,
+            'hint' => $this->hint,
         ];
     }
 }

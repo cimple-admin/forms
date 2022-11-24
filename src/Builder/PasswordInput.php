@@ -32,6 +32,7 @@ class PasswordInput extends Component
             'rules' => $this->rules,
             'property' => $this->property,
             'label' => $this->label,
+            'hint' => $this->hint,
         ];
     }
 }

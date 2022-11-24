@@ -12,6 +12,7 @@ abstract class Component
 
     protected string $property;
     protected string $label = '';
+    protected string $hint = '';
 
     public function __construct($property)
     {
@@ -27,6 +28,20 @@ abstract class Component
     {
         return $this->label;
     }
+
+    public function label($label): static
+    {
+        $this->label = $label;
+
+        return $this;
+    }
+
+    public function hint($hint) {
+        $this->hint= $hint;
+
+        return $this;
+    }
+
 
     abstract public function build();
 }
