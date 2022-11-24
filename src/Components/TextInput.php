@@ -4,7 +4,7 @@ namespace CimpleAdmin\Forms\Components;
 
 use Livewire\Component;
 
-class Input extends Component
+class TextInput extends Component
 {
     public string   $value = ''; // Input 的输入值
     public string   $type = 'text'; // Input 类型

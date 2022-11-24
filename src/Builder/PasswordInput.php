@@ -2,10 +2,10 @@
 
 namespace CimpleAdmin\Forms\Builder;
 
-class TextInput extends Component
+class PasswordInput extends Component
 {
-    const COMPONENT_NAME = 'input-text';
-    private string $type = 'text';
+    const COMPONENT_NAME = 'input-password';
+    private string $type = 'password';
 
     public function __construct($property)
     {
@@ -24,8 +24,6 @@ class TextInput extends Component
 
         return $this;
     }
-
-
 
     public function build(): array
     {
