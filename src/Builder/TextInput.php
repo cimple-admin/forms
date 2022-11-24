@@ -18,8 +18,6 @@ class TextInput extends Component
         return new self($property);
     }
 
-
-
     public function build(): array
     {
         return [
