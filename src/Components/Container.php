@@ -21,8 +21,9 @@ class Container implements Htmlable
          * @var $formBuilders Component[]
          */
         foreach ($formBuilders as $builder) {
-            $forms[$builder::COMPONENT_NAME . ':' . $builder->getLable()] = $builder->build();
+            $forms[$builder::COMPONENT_NAME.':'.$builder->getLable()] = $builder->build();
         }
+
         return new self($forms);
     }
 
