@@ -25,8 +25,6 @@ class TextInput extends Component
         return $this;
     }
 
-
-
     public function build(): array
     {
         return [

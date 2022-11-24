@@ -13,7 +13,6 @@ abstract class Component
     protected string $property;
     protected string $label = '';
 
-
     public function __construct($property)
     {
         $this->property = $property;
