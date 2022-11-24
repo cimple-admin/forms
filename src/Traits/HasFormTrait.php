@@ -56,6 +56,7 @@ trait HasFormTrait
                 $this->validate();
             } catch (ValidationException $e) {
                 $this->disableSubmitBtn = true;
+                throw $e;
             }
 
             $this->disableSubmitBtn = false;
