@@ -1,4 +1,4 @@
-risky: true
+risky: false
 version: 8.1
 preset: laravel
 enabled:
