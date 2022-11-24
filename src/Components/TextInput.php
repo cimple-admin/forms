@@ -6,11 +6,12 @@ use Livewire\Component;
 
 class TextInput extends Component
 {
-    public string   $value = ''; // Input 的输入值
-    public string   $type = 'text'; // Input 类型
-    public string   $label = ''; // Input 表单名称
-    public string   $property = '';
-    public string   $customRules = '';
+    public string $value = ''; // Input 的输入值
+    public string $type = 'text'; // Input 类型
+    public string $label = ''; // Input 表单名称
+    public string $property = '';
+    public string $customRules = '';
+    public string $hint = '';
     protected array $validationAttributes = [];
 
     public function mount($type, $label = '', $rules = [], $property = '')
