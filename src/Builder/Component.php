@@ -36,12 +36,12 @@ abstract class Component
         return $this;
     }
 
-    public function hint($hint) {
-        $this->hint= $hint;
+    public function hint($hint)
+    {
+        $this->hint = $hint;
 
         return $this;
     }
-
 
     abstract public function build();
 }
