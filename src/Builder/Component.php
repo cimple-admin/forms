@@ -38,7 +38,7 @@ abstract class Component
 
     public function hint($hint): static
     {
-        $this->hint= $hint;
+        $this->hint = $hint;
 
         return $this;
     }
