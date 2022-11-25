@@ -2,14 +2,12 @@
 
 namespace CimpleAdmin\Forms\Components;
 
-use Livewire\Component;
-
 class TextInput extends BaseComponent
 {
     public string $type = 'text'; // Input 类型
     public string $hint = '';
 
-    public function mount( $label = '', $rules = [], $property = '', $hint = '')
+    public function mount($label = '', $rules = [], $property = '', $hint = '')
     {
         $this->label = $label;
         $this->customRules = serialize($rules);
