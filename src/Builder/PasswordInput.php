@@ -5,7 +5,6 @@ namespace CimpleAdmin\Forms\Builder;
 class PasswordInput extends Component
 {
     const COMPONENT_NAME = 'input-password';
-    private string $type = 'password';
 
     public function __construct($property)
     {
@@ -28,7 +27,6 @@ class PasswordInput extends Component
     public function build(): array
     {
         return [
-            'type' => $this->type,
             'rules' => $this->rules,
             'property' => $this->property,
             'label' => $this->label,
