@@ -9,7 +9,7 @@ class BaseComponent extends Component
     public string $customRules = '';
     public string $property = '';
     public string $label = ''; // Input 表单名称
-    public string $value = ''; // Input 的输入值
+    public string|array $value = ''; // Input 的输入值
 
     public static function make(): static
     {

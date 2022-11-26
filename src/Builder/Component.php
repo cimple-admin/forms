@@ -13,10 +13,17 @@ abstract class Component
     protected string $property;
     protected string $label = '';
     protected string $hint = '';
+    protected string|array $value = '';
 
     public function __construct($property)
     {
         $this->property = $property;
+        $this->label = $property;
+    }
+
+    public static function make($property): static
+    {
+        return new static($property);
     }
 
     public function getProperty(): string
@@ -39,6 +46,12 @@ abstract class Component
     public function hint($hint): static
     {
         $this->hint = $hint;
+
+        return $this;
+    }
+
+    public function value($value): static {
+        $this->value = $value;
 
         return $this;
     }
