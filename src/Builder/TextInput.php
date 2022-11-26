@@ -6,8 +6,6 @@ class TextInput extends Component
 {
     const COMPONENT_NAME = 'input-text';
 
-
-
     public function build(): array
     {
         return [
