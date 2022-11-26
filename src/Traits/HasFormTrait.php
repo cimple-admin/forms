@@ -80,7 +80,10 @@ trait HasFormTrait
          * @var Component $component
          */
         foreach ($this->getForm() as $component) {
-            $rules[$component->getProperty()] = $component->getRules();
+            $componentRules = $component->getRules();
+            foreach ($componentRules as $index => $componentRule) {
+                $rules[str_replace('value', $component->getProperty(), $index)] = $componentRule;
+            }
         }
 
         return $rules;
