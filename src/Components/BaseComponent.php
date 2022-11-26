@@ -33,9 +33,7 @@ class BaseComponent extends Component
     {
         $rules = [];
         if ($this->customRules) {
-            $rules = [
-                'value' => unserialize($this->customRules),
-            ];
+            $rules = unserialize($this->customRules);
         }
 
         return $rules;

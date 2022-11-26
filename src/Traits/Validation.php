@@ -18,7 +18,7 @@ trait Validation
      */
     public function required(): static
     {
-        $this->rules[] = 'required';
+        $this->rules['value'][] = 'required';
 
         return $this;
     }
@@ -30,7 +30,7 @@ trait Validation
      */
     public function accept(): static
     {
-        $this->rules[] = 'accepted';
+        $this->rules['value'][] = 'accepted';
 
         return $this;
     }
@@ -42,7 +42,7 @@ trait Validation
      */
     public function activeUrl(): static
     {
-        $this->rules[] = 'active_url';
+        $this->rules['value'][] = 'active_url';
 
         return $this;
     }
@@ -55,7 +55,7 @@ trait Validation
      */
     public function email(string $validator = 'rfc'): static
     {
-        $this->rules[] = 'email:'.$validator;
+        $this->rules['value'][] = 'email:'.$validator;
 
         return $this;
     }
@@ -67,14 +67,14 @@ trait Validation
      */
     public function alpha(): static
     {
-        $this->rules[] = 'alpha';
+        $this->rules['value'][] = 'alpha';
 
         return $this;
     }
 
     public function alphaDash(): static
     {
-        $this->rules[] = 'alpha_dash';
+        $this->rules['value'][] = 'alpha_dash';
 
         return $this;
     }
@@ -87,7 +87,7 @@ trait Validation
      */
     public function size(int $size): static
     {
-        $this->rules[] = 'size:'.$size;
+        $this->rules['value'][] = 'size:'.$size;
 
         return $this;
     }
@@ -100,7 +100,7 @@ trait Validation
      */
     public function rules(array $rules = []): static
     {
-        $this->rules = array_merge($this->rules, $rules);
+        $this->rules['value'] = array_merge($this->rules['value'] ?? [], $rules);
 
         return $this;
     }
