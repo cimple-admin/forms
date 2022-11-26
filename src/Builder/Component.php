@@ -13,7 +13,7 @@ abstract class Component
     protected string $property;
     protected string $label = '';
     protected string $hint = '';
-    protected string|array $value = '';
+    protected string|array|bool $value = '';
 
     public function __construct($property)
     {

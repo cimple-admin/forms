@@ -4,8 +4,17 @@
     </label>
     @foreach($options as $optionValue => $option)
         <label class="label cursor-pointer">
-            <input wire:model="value" type="checkbox" value="{{$optionValue}}" class="checkbox checkbox-primary" />
+            <input wire:model="value" type="checkbox" value="{{$optionValue}}" class="checkbox checkbox-primary"/>
             <span class="label-text">{{$option}}</span>
         </label>
     @endforeach
+    <span class="label-text-alt">
+        @error('value')
+            <span class="error text-error">{{ $message }}</span>
+        @else
+            @error('value.*')
+                <span class="error text-error">{{ $message }}</span>
+            @enderror
+        @enderror
+    </span>
 </div>

@@ -14,6 +14,14 @@ class Checkbox extends BaseComponent
         $this->options = $options;
     }
 
+    protected function validationAttributes(): array
+    {
+        $attributes = parent::validationAttributes();
+        $attributes['value.*'] = $this->label;
+
+        return $attributes;
+    }
+
     public function render()
     {
         return view('form::checkbox');
