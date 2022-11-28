@@ -4,7 +4,7 @@ namespace CimpleAdmin\Forms\Builder;
 
 use Illuminate\Validation\Rule;
 
-class Checkbox extends Component
+class CheckList extends Component
 {
     const COMPONENT_NAME = 'checkbox';
     private array $options = [];
@@ -12,6 +12,7 @@ class Checkbox extends Component
     public function __construct($property)
     {
         parent::__construct($property);
+        $this->rules['value'][] = 'array';
     }
 
     public function options($options): static
@@ -21,16 +22,16 @@ class Checkbox extends Component
         return $this;
     }
 
-    public function array()
+    public function itemInArray($options): static
     {
-        $this->rules['value'][] = 'array';
+        $this->rules['value.*'][] = Rule::in($options);
 
         return $this;
     }
 
-    public function itemInArray($options): static
+    public function itemInOption(): static
     {
-        $this->rules['value.*'][] = Rule::in($options);
+        $this->rules['value.*'][] = Rule::in(array_keys($this->options));
 
         return $this;
     }
