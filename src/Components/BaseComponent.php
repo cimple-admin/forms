@@ -22,12 +22,11 @@ class BaseComponent extends Component
             $this->emitUp('updateEvent', $this->property, $this->value);
         }
 //        try {
-            $this->validateOnly($propertyName);
-            $this->validateOnly($propertyName . '.*');
+        $this->validateOnly($propertyName);
+        $this->validateOnly($propertyName.'.*');
 //        } catch (\Exception $e) {
 //            dd($e);
 //        }
-
     }
 
     protected function validationAttributes(): array
@@ -38,7 +37,7 @@ class BaseComponent extends Component
     public function rules(): array
     {
         $rules = ['value' => []];
-        if ($this->customRules &&  unserialize($this->customRules)) {
+        if ($this->customRules && unserialize($this->customRules)) {
             $rules = unserialize($this->customRules);
         }
 
