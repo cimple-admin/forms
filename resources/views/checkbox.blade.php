@@ -4,7 +4,7 @@
     </label>
     @foreach($options as $optionValue => $option)
         <label class="label cursor-pointer">
-            <input wire:model="value" type="checkbox" value="{{$optionValue}}" class="checkbox checkbox-primary"/>
+            <input wire:model="value" type="checkbox" value="{{$optionValue}}" class="{{$type == 'toggle' ? 'toggle' : 'checkbox'}} {{$type}}-primary"/>
             <span class="label-text">{{$option}}</span>
         </label>
     @endforeach

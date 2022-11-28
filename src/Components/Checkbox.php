@@ -5,6 +5,7 @@ namespace CimpleAdmin\Forms\Components;
 class Checkbox extends BaseComponent
 {
     public $options = [];
+    public $type = 'checkbox';
 
     public function mount($label = '', $rules = [], $property = '', $options = [])
     {
