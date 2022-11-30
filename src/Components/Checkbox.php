@@ -7,12 +7,9 @@ class Checkbox extends BaseComponent
     public $options = [];
     public $type = 'checkbox';
 
-    public function mount($label = '', $rules = [], $property = '', $options = [])
+    public function mount($rules = [])
     {
-        $this->label = $label;
         $this->customRules = serialize($rules);
-        $this->property = $property;
-        $this->options = $options;
     }
 
     protected function validationAttributes(): array
