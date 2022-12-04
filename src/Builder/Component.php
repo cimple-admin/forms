@@ -32,7 +32,7 @@ abstract class Component
         return $this->property;
     }
 
-    public function getLable(): string
+    public function getLabel(): string
     {
         return $this->label;
     }

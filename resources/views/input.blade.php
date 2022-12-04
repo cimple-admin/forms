@@ -1,9 +1,9 @@
-<div class="form-control w-full max-w-xs">
-    <div class="form-control w-full max-w-xs">
+<div class="form-control">
+    <div class="form-control">
         <label class="label">
             <span class="label-text">{{$label}}</span>
         </label>
-        <input type="{{$type}}" wire:model="value" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+        <input type="{{$type}}" wire:model="value" placeholder="Type here" class="input input-bordered" />
         <label class="label">
             <span class="label-text-alt">
                 @error('value')

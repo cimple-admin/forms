@@ -4,8 +4,8 @@ namespace CimpleAdmin\Forms\Components;
 
 class Checkbox extends BaseComponent
 {
-    public $options = [];
-    public $type = 'checkbox';
+    public array $options = [];
+    public string $type = 'checkbox';
 
     public function mount($rules = [])
     {
@@ -20,7 +20,7 @@ class Checkbox extends BaseComponent
         return $attributes;
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         return view('form::checkbox');
     }

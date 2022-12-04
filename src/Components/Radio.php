@@ -4,12 +4,13 @@ namespace CimpleAdmin\Forms\Components;
 
 class Radio extends BaseComponent
 {
-    public $options = [];
-    public $type = 'checkbox';
+    public array $options = [];
+    public string $type = 'checkbox';
 
-    public function mount($rules = [])
+    public function mount($value = [],$rules = [])
     {
         $this->customRules = serialize($rules);
+        $this->value = $value;
     }
 
     protected function validationAttributes(): array
@@ -20,7 +21,7 @@ class Radio extends BaseComponent
         return $attributes;
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         return view('form::radio');
     }
