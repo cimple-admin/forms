@@ -2,8 +2,6 @@
 
 namespace CimpleAdmin\Forms\Builder;
 
-use Illuminate\Validation\Rule;
-
 class CheckBox extends Component
 {
     const COMPONENT_NAME = 'checkbox';
@@ -15,7 +13,6 @@ class CheckBox extends Component
         parent::__construct($property);
         $this->required()->accept();
     }
-
 
     public function label($label): static
     {
