@@ -3,7 +3,10 @@
 namespace CimpleAdmin\Forms\Components;
 
 use CimpleAdmin\Forms\Builder\Component;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
 class Container implements Htmlable
 {
@@ -41,13 +44,13 @@ class Container implements Htmlable
         return $this;
     }
 
-    public function toHtml(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|string|\Illuminate\Contracts\Foundation\Application
+    public function toHtml(): Factory|View|string|Application
     {
         // TODO: Implement toHtml() method.
         return $this->render();
     }
 
-    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function render(): Factory|View|Application
     {
         return view('form::container', [
             'forms' => $this->forms,

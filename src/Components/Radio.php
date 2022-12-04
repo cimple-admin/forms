@@ -2,6 +2,10 @@
 
 namespace CimpleAdmin\Forms\Components;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+
 class Radio extends BaseComponent
 {
     public array $options = [];
@@ -15,7 +19,7 @@ class Radio extends BaseComponent
         return $attributes;
     }
 
-    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function render(): Factory|View|Application
     {
         return view('form::radio');
     }
