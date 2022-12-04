@@ -14,6 +14,7 @@ abstract class Component
     protected string $label = '';
     protected string $hint = '';
     protected string|array|bool $value = '';
+    protected bool $hiddenLabel = false;
 
     public function __construct($property)
     {
@@ -53,6 +54,13 @@ abstract class Component
     public function value($value): static
     {
         $this->value = $value;
+
+        return $this;
+    }
+
+    public function hiddenLabel(): static
+    {
+        $this->hiddenLabel = true;
 
         return $this;
     }

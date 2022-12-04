@@ -1,7 +1,10 @@
 <div class="form-control w-full max-w-xs">
-    <label class="label">
-        <span class="label-text">{{$label}}</span>
-    </label>
+    @if(!$hiddenLabel)
+        <label class="label">
+            <span class="label-text">{{$label}}</span>
+        </label>
+    @endif
+
     @foreach($options as $optionValue => $option)
         <label class="label cursor-pointer">
             <span class="label-text">{{$option}}</span>

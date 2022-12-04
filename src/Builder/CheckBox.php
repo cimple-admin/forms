@@ -45,6 +45,7 @@ class CheckBox extends Component
             'options' => $this->options,
             'value' => $this->value,
             'type' => $this->type,
+            'hiddenLabel' => $this->hiddenLabel,
         ];
     }
 }

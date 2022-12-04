@@ -10,6 +10,7 @@ class BaseComponent extends Component
     public string $property = '';
     public string $label = ''; // Input 表单名称
     public string|array|bool $value = ''; // Input 的输入值
+    public bool $hiddenLabel = false;
 
     public static function make(): static
     {
