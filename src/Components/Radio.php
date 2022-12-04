@@ -7,7 +7,7 @@ class Radio extends BaseComponent
     public array $options = [];
     public string $type = 'checkbox';
 
-    public function mount($value = [],$rules = [])
+    public function mount($value = [], $rules = [])
     {
         $this->customRules = serialize($rules);
         $this->value = $value;
