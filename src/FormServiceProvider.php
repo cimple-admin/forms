@@ -4,6 +4,7 @@ namespace CimpleAdmin\Forms;
 
 use CimpleAdmin\Forms\Components\Checkbox;
 use CimpleAdmin\Forms\Components\PasswordInput;
+use CimpleAdmin\Forms\Components\Radio;
 use CimpleAdmin\Forms\Components\TextInput;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Support\ServiceProvider;
@@ -18,5 +19,6 @@ class FormServiceProvider extends ServiceProvider
         Livewire::component('input-text', TextInput::class);
         Livewire::component('input-password', PasswordInput::class);
         Livewire::component('checkbox', Checkbox::class);
+        Livewire::component('radio', Radio::class);
     }
 }
