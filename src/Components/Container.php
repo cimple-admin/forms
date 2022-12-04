@@ -28,6 +28,7 @@ class Container implements Htmlable
             }
             $forms[$builder::COMPONENT_NAME.':'.$builder->getLabel()] = $componentParams;
         }
+
         return new self($forms);
     }
 
