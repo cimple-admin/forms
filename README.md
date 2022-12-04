@@ -55,7 +55,7 @@ public function getForm()
 * [ ] radio
 * [ ] select
 * [ ] textarea
-* [ ] editor
+* [ ] editor (wangeditor and editor.md)
 * [ ] fileupload (single or multi)
 ### 更多说明
 1. 还在初期，改动很大，不要生产环境
