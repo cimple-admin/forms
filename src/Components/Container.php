@@ -8,6 +8,7 @@ use Illuminate\Contracts\Support\Htmlable;
 class Container implements Htmlable
 {
     private array $forms;
+    private static array $fillValues = [];
 
     public function __construct($forms)
     {
@@ -21,10 +22,22 @@ class Container implements Htmlable
          * @var $formBuilders Component[]
          */
         foreach ($formBuilders as $builder) {
-            $forms[$builder::COMPONENT_NAME.':'.$builder->getLabel()] = $builder->build();
+            $componentParams = $builder->build();
+            if ($componentParams['value']) {
+                self::$fillValues[$componentParams['property']] = $componentParams['value'];
+            }
+            $forms[$builder::COMPONENT_NAME.':'.$builder->getLabel()] = $componentParams;
+        }
+        return new self($forms);
+    }
+
+    public function fill($component): static
+    {
+        foreach (self::$fillValues as $propertyName => $value) {
+            $component->$propertyName = $value;
         }
 
-        return new self($forms);
+        return $this;
     }
 
     public function toHtml(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|string|\Illuminate\Contracts\Foundation\Application

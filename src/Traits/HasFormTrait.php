@@ -23,7 +23,7 @@ trait HasFormTrait
             return parent::__get($property);
         } catch (PropertyNotFoundException $e) {
             if ($property == 'form') {
-                return Container::make($this->getForm());
+                return Container::make($this->getForm())->fill($this);
             }
             throw $e;
         }

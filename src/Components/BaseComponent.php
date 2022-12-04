@@ -17,6 +17,11 @@ class BaseComponent extends Component
         return new static();
     }
 
+    public function mount($rules = [])
+    {
+        $this->customRules = serialize($rules);
+    }
+
     public function updated($propertyName)
     {
         if ($this->property) {
