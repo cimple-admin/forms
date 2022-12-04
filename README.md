@@ -45,8 +45,18 @@ public function getForm()
 6. 前端样式参考 [https://tailwindcss.com/docs/guides/laravel](https://tailwindcss.com/docs/guides/laravel) 这里来搞定， `daisy` 也是参照他的文档加上依赖就可以了 (可以考虑增加个 command 来吧这步搞定)
    。最后在 `tailwind.config.js` 的 `content` 中添加 `"./vendor/cimple-admin/forms/resources/**/*.blade.php"`。 让构造器的页面可以被正确探测到，从而加载样式。
 
+### 初步完成组件
+* [x] input
+* [x] password
+* [x] checkbox
+* [x] checklist
 
-
+### 待增加组件
+* [ ] radio
+* [ ] select
+* [ ] textarea
+* [ ] editor
+* [ ] fileupload (single or multi)
 ### 更多说明
 1. 还在初期，改动很大，不要生产环境
 2. 参考了很多 [https://filamentphp.com/](https://filamentphp.com/) 的逻辑，代码是否有交叉未知。
