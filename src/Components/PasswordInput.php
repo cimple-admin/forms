@@ -7,7 +7,7 @@ class PasswordInput extends BaseComponent
     public string $type = 'password'; // Input 类型
     public string $hint = '';
 
-    public function mount($value = '',$rules = [])
+    public function mount($value = '', $rules = [])
     {
         $this->customRules = serialize($rules);
         $this->value = $value;
