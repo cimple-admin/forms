@@ -8,7 +8,7 @@
     @foreach($options as $optionValue => $option)
         <label class="label cursor-pointer">
             <span class="label-text">{{$option}}</span>
-            <input wire:model="value" name="{{$value}}" type="radio" value="{{$optionValue}}" class="radio radio-primary"/>
+            <input wire:model="value" type="radio" value="{{$optionValue}}" class="radio radio-primary"/>
         </label>
     @endforeach
     <span class="label-text-alt">
