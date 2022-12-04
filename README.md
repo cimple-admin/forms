@@ -50,9 +50,9 @@ public function getForm()
 * [x] password
 * [x] checkbox
 * [x] checklist
+* [x] radio
 
 ### 待增加组件
-* [ ] radio
 * [ ] select
 * [ ] textarea
 * [ ] editor (wangeditor and editor.md)
