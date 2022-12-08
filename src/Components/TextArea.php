@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\View;
 class TextArea extends BaseComponent
 {
     public string $hint = '';
+    public int $rows = 4;
 
     public function render(): Factory|View|Application
     {
