@@ -8,7 +8,8 @@ class TextArea extends Component
     private int $rows = 4;
 
     /**
-     * 设置行数
+     * 设置行数.
+     *
      * @param $rows
      * @return $this
      */
