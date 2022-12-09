@@ -20,7 +20,10 @@ class FormServiceProvider extends ServiceProvider
         // 发布文件
         $this->publishes([
             __DIR__.'/../dist/assets' => public_path('vendor/forms'),
-        ], 'form-assets');
+        ], ['cimple-form', 'cimple-form-assets']);
+        $this->publishes([
+            __DIR__.'/../resources/views/layouts' => resource_path('/views/layouts'),
+        ], ['cimple-form', 'cimple-form-layouts']);
         // 这里声明的只是 components 不是 builder 别搞混了
         Livewire::component('input-text', TextInput::class);
         Livewire::component('input-password', PasswordInput::class);
