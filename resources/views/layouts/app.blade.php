@@ -10,5 +10,4 @@
 
 @livewireScripts
 <script src="{{asset('/vendor/forms/app.js')}}"></script>
-{{assert()}}
 </body>
