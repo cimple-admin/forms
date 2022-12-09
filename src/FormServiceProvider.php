@@ -15,7 +15,12 @@ class FormServiceProvider extends ServiceProvider
 {
     public function boot(ResponseFactory $response)
     {
+        // 加载视图文件
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'form');
+        // 发布文件
+        $this->publishes([
+            __DIR__.'/../dist/assets' => public_path('vendor/forms'),
+        ], 'form-assets');
         // 这里声明的只是 components 不是 builder 别搞混了
         Livewire::component('input-text', TextInput::class);
         Livewire::component('input-password', PasswordInput::class);
