@@ -11,8 +11,9 @@
 
 #### 在新项目中安装
 1. 创建 laravel 项目后，安装扩展 `composer require cimple-admin/forms`
-2. 安装后就可以使用 `artisan make:livewire XXX` 命令来创建自己的组件了。
-3. 引入 `HasFormTrait`。只需实现一个方法 `getForm`
+2. `./vendor/bin/sail artisan vendor:publish --tag=cimple-form` 使用这个命令把资源文件复制到自己的项目中
+3. 安装后就可以使用 `artisan make:livewire XXX` 命令来创建自己的组件了。
+4. 引入 `HasFormTrait`。只需实现一个方法 `getForm`
 ```php
    class Test1 extends Component
    {
@@ -42,8 +43,8 @@ public function getForm()
 }
 ```
 5. 页面模板 增加 `{{ $this->form }}` 就可以了
-6. 前端样式参考 [https://tailwindcss.com/docs/guides/laravel](https://tailwindcss.com/docs/guides/laravel) 这里来搞定， `daisy` 也是参照他的文档加上依赖就可以了 (可以考虑增加个 command 来吧这步搞定)
-   。最后在 `tailwind.config.js` 的 `content` 中添加 `"./vendor/cimple-admin/forms/resources/**/*.blade.php"`。 让构造器的页面可以被正确探测到，从而加载样式。
+6. ~~前端样式参考 [https://tailwindcss.com/docs/guides/laravel](https://tailwindcss.com/docs/guides/laravel) 这里来搞定， `daisy` 也是参照他的文档加上依赖就可以了 (可以考虑增加个 command 来吧这步搞定)
+   。最后在 `tailwind.config.js` 的 `content` 中添加 `"./vendor/cimple-admin/forms/resources/**/*.blade.php"`。 让构造器的页面可以被正确探测到，从而加载样式。~~
 
 ### 初步完成组件
 * [x] input
