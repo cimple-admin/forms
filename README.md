@@ -33,7 +33,7 @@
    }
 ```
    
-4. 这个方法返回了，一批表单组件。
+5. 这个方法返回了，一批表单组件。
 ```php
 public function getForm()
 {
@@ -42,8 +42,8 @@ public function getForm()
     ];
 }
 ```
-5. 页面模板 增加 `{{ $this->form }}` 就可以了
-6. ~~前端样式参考 [https://tailwindcss.com/docs/guides/laravel](https://tailwindcss.com/docs/guides/laravel) 这里来搞定， `daisy` 也是参照他的文档加上依赖就可以了 (可以考虑增加个 command 来吧这步搞定)
+6. 页面模板 增加 `{{ $this->form }}` 就可以了
+7. ~~前端样式参考 [https://tailwindcss.com/docs/guides/laravel](https://tailwindcss.com/docs/guides/laravel) 这里来搞定， `daisy` 也是参照他的文档加上依赖就可以了 (可以考虑增加个 command 来吧这步搞定)
    。最后在 `tailwind.config.js` 的 `content` 中添加 `"./vendor/cimple-admin/forms/resources/**/*.blade.php"`。 让构造器的页面可以被正确探测到，从而加载样式。~~
 
 ### 初步完成组件
