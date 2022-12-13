@@ -1,5 +1,11 @@
 @import "/node_modules/choices.js/public/assets/styles/choices.css";
 
+.choices__list--multiple .choices__item {
+    background-color: #0071BC;
+    border: 1px solid #0071BC;
+    border-radius: 0px;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -19,7 +19,6 @@
     </div>
 
     <span class="label-text-alt">
-        {{var_export($value)}}
         @error('value')
             <span class="error text-error">{{ $message }}</span>
         @else
@@ -33,14 +32,14 @@
             const element = document.querySelector('#choices-multiple-default');
             const choices = new Choices(element, {
                 allowHTML: true,
+                removeItems: true,
+                removeItemButton: true
             });
             choices.passedElement.element.addEventListener(
                 'change',
                 function (event) {
                     // do something creative here...
-                    console.log(choices.getValue(true));
                     @this.value = choices.getValue(true);
-                    console.log(@this.value)
                 },
                 false,
             );
