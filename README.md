@@ -53,11 +53,11 @@
 * [x] checklist
 * [x] radio
 * [x] textarea
+* [x] select
 
 上面这些仅仅是功能完成了，后续还有抽象、样式优化、功能细节优化等持续功能要做
 
 ### 待增加组件
-* [ ] select
 * [ ] editor (wangeditor 、 editor.md 、 ueditorplus(这个待考虑))
 * [ ] fileupload (single or multi)
 ### 更多说明

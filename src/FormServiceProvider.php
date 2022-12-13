@@ -5,6 +5,7 @@ namespace CimpleAdmin\Forms;
 use CimpleAdmin\Forms\Components\Checkbox;
 use CimpleAdmin\Forms\Components\PasswordInput;
 use CimpleAdmin\Forms\Components\Radio;
+use CimpleAdmin\Forms\Components\Select;
 use CimpleAdmin\Forms\Components\SelectMulti;
 use CimpleAdmin\Forms\Components\TextArea;
 use CimpleAdmin\Forms\Components\TextInput;
@@ -32,5 +33,6 @@ class FormServiceProvider extends ServiceProvider
         Livewire::component('radio', Radio::class);
         Livewire::component('textarea', TextArea::class);
         Livewire::component('select-multi', SelectMulti::class);
+        Livewire::component('select', Select::class);
     }
 }
