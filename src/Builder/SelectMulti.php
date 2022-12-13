@@ -4,9 +4,9 @@ namespace CimpleAdmin\Forms\Builder;
 
 use Illuminate\Validation\Rule;
 
-class Select extends Component
+class SelectMulti extends Component
 {
-    const COMPONENT_NAME = 'select';
+    const COMPONENT_NAME = 'select-multi';
     private array $options = [];
 
     public function __construct($property)
