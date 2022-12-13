@@ -31,7 +31,9 @@
     <script>
         document.addEventListener('livewire:load', function () {
             const element = document.querySelector('#choices-multiple-default');
-            const choices = new Choices(element);
+            const choices = new Choices(element, {
+                allowHTML: true,
+            });
             choices.passedElement.element.addEventListener(
                 'change',
                 function (event) {
@@ -42,6 +44,10 @@
                 },
                 false,
             );
+
+            if (@this.value) {
+                choices.setChoiceByValue(@this.value)
+            }
         })
     </script>
 </div>
