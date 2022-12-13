@@ -33,7 +33,7 @@
             const choices = new Choices(element, {
                 allowHTML: true,
                 removeItems: true,
-                removeItemButton: true
+                removeItemButton: true,
             });
             choices.passedElement.element.addEventListener(
                 'change',
