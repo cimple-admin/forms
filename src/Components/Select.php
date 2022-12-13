@@ -10,8 +10,6 @@ class Select extends BaseComponent
 {
     public array $options = [];
 
-
-
     public function render(): Factory|View|Application
     {
         return view('form::select');
