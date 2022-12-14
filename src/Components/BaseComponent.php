@@ -27,12 +27,8 @@ class BaseComponent extends Component
         if ($this->property) {
             $this->emitUp('updateEvent', $this->property, $this->value);
         }
-//        try {
         $this->validateOnly($propertyName);
         $this->validateOnly($propertyName.'.*');
-//        } catch (\Exception $e) {
-//            dd($e);
-//        }
     }
 
     protected function validationAttributes(): array

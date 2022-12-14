@@ -51,13 +51,6 @@ abstract class Component
         return $this;
     }
 
-    public function value($value): static
-    {
-        $this->value = $value;
-
-        return $this;
-    }
-
     public function hiddenLabel(): static
     {
         $this->hiddenLabel = true;
