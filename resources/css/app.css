@@ -1,4 +1,5 @@
 @import "/node_modules/choices.js/public/assets/styles/choices.css";
+@import "/node_modules/@wangeditor/editor/dist/css/style.css";
 
 .choices__list--multiple .choices__item {
     background-color: #0071BC;

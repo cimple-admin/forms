@@ -10,9 +10,5 @@ class PasswordInput extends BaseComponent
 {
     public string $type = 'password'; // Input 类型
     public string $hint = '';
-
-    public function render(): Factory|View|Application
-    {
-        return view('form::input');
-    }
+    protected string $viewName = 'form::input';
 }

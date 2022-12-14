@@ -10,9 +10,5 @@ class TextInput extends BaseComponent
 {
     public string $type = 'text'; // Input 类型
     public string $hint = '';
-
-    public function render(): Factory|View|Application
-    {
-        return view('form::input');
-    }
+    protected string $viewName = 'form::input';
 }

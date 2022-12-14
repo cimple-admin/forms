@@ -9,7 +9,7 @@ use Illuminate\Contracts\View\View;
 class Radio extends BaseComponent
 {
     public array $options = [];
-    public string $type = 'checkbox';
+    protected string $viewName = 'form::radio';
 
     protected function validationAttributes(): array
     {
@@ -17,10 +17,5 @@ class Radio extends BaseComponent
         $attributes['value.*'] = $this->label;
 
         return $attributes;
-    }
-
-    public function render(): Factory|View|Application
-    {
-        return view('form::radio');
     }
 }

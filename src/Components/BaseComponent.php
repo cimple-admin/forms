@@ -2,6 +2,9 @@
 
 namespace CimpleAdmin\Forms\Components;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class BaseComponent extends Component
@@ -11,6 +14,8 @@ class BaseComponent extends Component
     public string $label = ''; // Input 表单名称
     public string|array|bool $value = ''; // Input 的输入值
     public bool $hiddenLabel = false;
+
+    protected string $viewName = '';
 
     public static function make(): static
     {
@@ -44,5 +49,10 @@ class BaseComponent extends Component
         }
 
         return $rules;
+    }
+
+    public function render(): Factory|View|Application
+    {
+        return view($this->viewName);
     }
 }

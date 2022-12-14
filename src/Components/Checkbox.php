@@ -10,6 +10,7 @@ class Checkbox extends BaseComponent
 {
     public array $options = [];
     public string $type = 'checkbox';
+    protected string $viewName = 'form::checkbox';
 
     protected function validationAttributes(): array
     {
@@ -17,10 +18,5 @@ class Checkbox extends BaseComponent
         $attributes['value.*'] = $this->label;
 
         return $attributes;
-    }
-
-    public function render(): Factory|View|Application
-    {
-        return view('form::checkbox');
     }
 }
