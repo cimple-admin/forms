@@ -54,11 +54,12 @@
 * [x] radio
 * [x] textarea
 * [x] select
+* [x] wangeditor
 
 上面这些仅仅是功能完成了，后续还有抽象、样式优化、功能细节优化等持续功能要做
 
 ### 待增加组件
-* [ ] editor (wangeditor 、 editor.md 、 ueditorplus(这个待考虑))
+* [ ] editor ( editor.md 、 ueditorplus(这个待考虑))
 * [ ] fileupload (single or multi)
 ### 更多说明
 1. 还在初期，改动很大，不要生产环境
