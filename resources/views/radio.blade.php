@@ -1,4 +1,4 @@
-<div class="form-control w-full">
+<div class="form-control">
     @if(!$hiddenLabel)
         <label class="label">
             <span class="label-text">{{$label}}</span>

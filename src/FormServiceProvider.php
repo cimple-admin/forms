@@ -9,6 +9,7 @@ use CimpleAdmin\Forms\Components\Select;
 use CimpleAdmin\Forms\Components\SelectMulti;
 use CimpleAdmin\Forms\Components\TextArea;
 use CimpleAdmin\Forms\Components\TextInput;
+use CimpleAdmin\Forms\Components\WangEditor;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
@@ -34,5 +35,6 @@ class FormServiceProvider extends ServiceProvider
         Livewire::component('textarea', TextArea::class);
         Livewire::component('select-multi', SelectMulti::class);
         Livewire::component('select', Select::class);
+        Livewire::component('wang-editor', WangEditor::class);
     }
 }

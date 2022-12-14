@@ -5,6 +5,9 @@ module.exports = {
       {
         pattern: /.*xs/,
       },
+      {
+          pattern: /btn.*/,
+      },
   ],
   theme: {
     extend: {},

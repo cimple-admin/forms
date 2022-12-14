@@ -7,6 +7,17 @@
     border-radius: 0px;
 }
 
+.w-e-text-container h1{
+    font-size: 2em;
+}
+
+#editor—wrapper {
+    border: 1px solid #ccc;
+    z-index: 100; /* 按需定义 */
+}
+#toolbar-container { border-bottom: 1px solid #ccc; }
+#editor-container { height: 500px; }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
