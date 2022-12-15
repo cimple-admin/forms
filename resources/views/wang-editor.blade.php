@@ -17,6 +17,7 @@
         document.addEventListener('livewire:load', function () {
             const editorConfig = {
                 placeholder: 'Type here...',
+                MENU_CONF: {},
                 onChange(editor) {
                     const html = editor.getHtml();
                     console.log('editor content', html);
