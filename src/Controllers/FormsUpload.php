@@ -14,10 +14,15 @@ class FormsUpload
             $chunkIndex = $request->post('dzchunkindex');
             $fileName = $request->post('dzuuid');
             foreach ($request->file('file') as $file) {
+                $explodeOriginFileName = explode('.', $file->getClientOriginalName());
+                $fileExt = '';
+                if (isset($explodeOriginFileName[1])) {
+                    $fileExt = $explodeOriginFileName[1];
+                }
                 if ($chunkIndex == 0) {
-                    $uploadSuccess = Storage::put('upload/'.$fileName.'.pdf', $file);
+                    $uploadSuccess = Storage::put('upload/'.$fileName.($fileExt ? ('.'.$fileExt) : ''), $file->get());
                 } else {
-                    $uploadSuccess = Storage::append('upload/'.$fileName.'.pdf', $file, null);
+                    $uploadSuccess = Storage::append('upload/'.$fileName.($fileExt ? ('.'.$fileExt) : ''), $file->get(), null);
                 }
             }
         }
