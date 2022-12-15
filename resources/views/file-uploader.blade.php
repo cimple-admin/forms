@@ -5,7 +5,11 @@
         document.addEventListener('livewire:load', function () {
             const myDropzone = new Dropzone("#my-form", {
                 url: "/cimple-admin/form/file/upload",
-                maxFiles: 1,
+                paramName: 'file[]',
+                // uploadMultiple: true,
+                chunking: true,
+                maxFilesize: 1000000000000000,
+                // maxFiles: 1,
             });
 
             myDropzone.on('maxfilesexceeded', (file) => {
