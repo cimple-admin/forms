@@ -25,7 +25,7 @@ class FormServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'form');
         // 发布文件
         $this->publishes([
-            __DIR__.'/../dist/assets' => public_path('vendor/forms'),
+            __DIR__.'/../public/vendor' => public_path('vendor/forms'),
         ], ['cimple-form', 'cimple-form-assets']);
         $this->publishes([
             __DIR__.'/../resources/views/layouts' => resource_path('/views/layouts'),
