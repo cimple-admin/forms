@@ -3,6 +3,7 @@
 namespace CimpleAdmin\Forms;
 
 use CimpleAdmin\Forms\Components\Checkbox;
+use CimpleAdmin\Forms\Components\FileUploader;
 use CimpleAdmin\Forms\Components\PasswordInput;
 use CimpleAdmin\Forms\Components\Radio;
 use CimpleAdmin\Forms\Components\Select;
@@ -18,6 +19,8 @@ class FormServiceProvider extends ServiceProvider
 {
     public function boot(ResponseFactory $response)
     {
+        // 加载路由文件
+        $this->loadRoutesFrom(__DIR__.'/routes/web.php');
         // 加载视图文件
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'form');
         // 发布文件
@@ -36,5 +39,6 @@ class FormServiceProvider extends ServiceProvider
         Livewire::component('select-multi', SelectMulti::class);
         Livewire::component('select', Select::class);
         Livewire::component('wang-editor', WangEditor::class);
+        Livewire::component('file-uploader', FileUploader::class);
     }
 }

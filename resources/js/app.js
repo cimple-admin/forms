@@ -6,3 +6,7 @@ import { createEditor, createToolbar } from "@wangeditor/editor"
 
 window.createEditor = createEditor;
 window.createToolbar = createToolbar;
+
+import Dropzone from "dropzone";
+
+window.Dropzone = Dropzone;
