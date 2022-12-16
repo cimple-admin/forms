@@ -21,7 +21,7 @@ class FormsUpload
                 if (empty($fileExt) && isset($explodeOriginFileName[1])) {
                     $fileExt = $explodeOriginFileName[1];
                 }
-                $uploadSuccess = Storage::putFileAs('chunk/'.$fileName, $file, 'chunk-' . sprintf('%0' . mb_strlen($chunkCount) . 'd', $chunkIndex));
+                $uploadSuccess = Storage::putFileAs('chunk/'.$fileName, $file, 'chunk-'.sprintf('%0'.mb_strlen($chunkCount).'d', $chunkIndex));
 
 //                if ($chunkIndex == 0) {
 //                    $uploadSuccess = Storage::put('upload/'.$fileName.($fileExt ? ('.'.$fileExt) : ''), $file->get());
