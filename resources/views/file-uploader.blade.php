@@ -9,10 +9,11 @@
                 // uploadMultiple: true,
                 chunking: true,
                 maxFilesize: 1000000000000000,
-                parallelChunkUploads: true,
+                // parallelChunkUploads: true,
                 // maxFiles: 1,
                 chunkSize: 4*1024*1024,
                 forceChunking: true,
+                addRemoveLinks: true,
             });
 
             myDropzone.on('maxfilesexceeded', (file) => {
