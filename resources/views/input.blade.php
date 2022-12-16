@@ -13,4 +13,12 @@
             {{$hint}}
          </span>
     </label>
+    @once
+        @push('scripts')
+            <script>
+                // Your custom JavaScript...
+                console.log('abc')
+            </script>
+        @endpush
+    @endonce
 </div>

@@ -1,6 +1,12 @@
 <div class="form-control">
     fdsafdas
     <div class="dropzone" id="my-form"></div>
+    @push('scripts')
+        <script>
+            // Your JS here.
+            alert('abc');
+        </script>
+    @endpush
     <script>
         document.addEventListener('livewire:load', function () {
             const myDropzone = new Dropzone("#my-form", {

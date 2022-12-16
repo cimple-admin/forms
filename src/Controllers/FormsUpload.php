@@ -34,6 +34,8 @@ class FormsUpload
                     foreach ($allChunkFiles as $chunkFile) {
                         Storage::append('upload/'.$fileName.($fileExt ? ('.'.$fileExt) : ''), Storage::get($chunkFile), null);
                     }
+                    // 合并文件后，移除文件
+                    Storage::deleteDirectory('chunk/'.$fileName);
                 }
             }
         }
