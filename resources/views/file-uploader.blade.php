@@ -2,7 +2,8 @@
     <label class="label">
         <span class="label-text">{{$label}}</span>
     </label>
-    <div id="{{$property}}UploadContainer" class="file_upload p-5 relative w-full border-4 border-dotted border-gray-300 rounded-lg">
+    <div id="{{$property}}UploadContainer"
+         class="file_upload p-5 relative w-full border-4 border-dotted border-gray-300 rounded-lg">
         <svg class="text-indigo-500 w-24 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none"
              viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -34,55 +35,59 @@
         @endpush
         @push('scripts')
             <script src="{{asset('/vendor/forms/plupload/plupload.full.min.js')}}"></script>
-                <!-- activate Georgian translation -->
-                <script type="text/javascript" src="{{asset('/vendor/forms/plupload/i18n/zh_CN.js')}}"></script>
+            <!-- activate Georgian translation -->
+            <script type="text/javascript" src="{{asset('/vendor/forms/plupload/i18n/zh_CN.js')}}"></script>
             <script !src="">
-                var uploader = new plupload.Uploader({
-                    runtimes: 'html5',
-                    drop_element: document.getElementById('{{$property}}UploadContainer'),
-                    browse_button: '{{$property}}UploadBtn', // you can pass in id...
-                    container: document.getElementById('{{$property}}UploadContainer'), // ... or DOM Element itself
+                document.addEventListener('livewire:load', function () {
+                    const containerEle = document.getElementById(@this.property + 'UploadContainer')
+                    var uploader = new plupload.Uploader({
+                        runtimes: 'html5',
+                        drop_element: containerEle,
+                        browse_button: @this.property + 'UploadBtn', // you can pass in id...
+                        container: containerEle, // ... or DOM Element itself
 
-                    url: "/cimple-admin/form/file/upload",
+                        url: "/cimple-admin/form/file/upload",
 
-                    chunk_size: '10mb',
-                    filters: {
-                        max_file_size: '1000mb',
-                        // mime_types: [
-                        //     {title : "Image files", extensions : "jpg,gif,png"},
-                        //     {title : "Zip files", extensions : "zip"}
-                        // ]
-                    },
-
-
-                    init: {
-                        PostInit: function () {
-                            // document.getElementById('filelist').innerHTML = '';
-                            //
-                            // document.getElementById('uploadfiles').onclick = function () {
-                            //     uploader.start();
-                            //     return false;
-                            // };
+                        chunk_size: '10mb',
+                        filters: {
+                            max_file_size: '1000mb',
+                            // mime_types: [
+                            //     {title : "Image files", extensions : "jpg,gif,png"},
+                            //     {title : "Zip files", extensions : "zip"}
+                            // ]
                         },
 
-                        FilesAdded: function (up, files) {
-                            plupload.each(files, function (file) {
-                                console.log(file);
-                            });
-                            uploader.start();
-                        },
 
-                        UploadProgress: function (up, file) {
-                            console.log(file.percent);
-                        },
+                        init: {
+                            PostInit: function () {
+                                // document.getElementById('filelist').innerHTML = '';
+                                //
+                                // document.getElementById('uploadfiles').onclick = function () {
+                                //     uploader.start();
+                                //     return false;
+                                // };
+                            },
 
-                        Error: function (up, err) {
-                            console.log(err);
+                            FilesAdded: function (up, files) {
+                                plupload.each(files, function (file) {
+                                    console.log(file);
+                                });
+                                uploader.start();
+                            },
+
+                            UploadProgress: function (up, file) {
+                                console.log(file.percent);
+                            },
+
+                            Error: function (up, err) {
+                                console.log(err);
+                            }
                         }
-                    }
-                });
+                    });
 
-                uploader.init();
+                    uploader.init();
+                })
+
             </script>
         @endpush
     @endonce
