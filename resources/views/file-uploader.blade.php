@@ -34,6 +34,8 @@
         @endpush
         @push('scripts')
             <script src="{{asset('/vendor/forms/plupload/plupload.full.min.js')}}"></script>
+                <!-- activate Georgian translation -->
+                <script type="text/javascript" src="{{asset('/vendor/forms/plupload/i18n/zh_CN.js')}}"></script>
             <script !src="">
                 var uploader = new plupload.Uploader({
                     runtimes: 'html5',
@@ -41,14 +43,15 @@
                     browse_button: '{{$property}}UploadBtn', // you can pass in id...
                     container: document.getElementById('{{$property}}UploadContainer'), // ... or DOM Element itself
 
-                    url: "/examples/upload",
+                    url: "/cimple-admin/form/file/upload",
 
+                    chunk_size: '10mb',
                     filters: {
-                        max_file_size: '10mb',
-                        mime_types: [
-                            {title : "Image files", extensions : "jpg,gif,png"},
-                            {title : "Zip files", extensions : "zip"}
-                        ]
+                        max_file_size: '1000mb',
+                        // mime_types: [
+                        //     {title : "Image files", extensions : "jpg,gif,png"},
+                        //     {title : "Zip files", extensions : "zip"}
+                        // ]
                     },
 
 
@@ -66,6 +69,7 @@
                             plupload.each(files, function (file) {
                                 console.log(file);
                             });
+                            uploader.start();
                         },
 
                         UploadProgress: function (up, file) {
