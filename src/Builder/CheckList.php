@@ -13,6 +13,7 @@ class CheckList extends Component
     {
         parent::__construct($property);
         $this->rules['value'][] = 'array';
+        $this->value = [];
     }
 
     public function options($options): static
