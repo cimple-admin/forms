@@ -2,9 +2,9 @@
     <label class="label">
         <span class="label-text">{{$label}}</span>
     </label>
-    <div id="editor—wrapper" wire:ignore>
-        <div wire:ignore.self id="toolbar-container"><!-- 工具栏 --></div>
-        <div wire:ignore.self id="editor-container"><!-- 编辑器 --></div>
+    <div id="editor—wrapper-{{$property}}" wire:ignore>
+        <div wire:ignore.self id="toolbar-container-{{$property}}"><!-- 工具栏 --></div>
+        <div wire:ignore.self id="editor-container-{{$property}}"><!-- 编辑器 --></div>
     </div>
     <label class="label">
         <span class="label-text-alt">
@@ -17,16 +17,16 @@
         @push('style')
             <link rel="stylesheet" href="{{asset('/vendor/forms/wangeditor/css/style.css')}}">
             <style>
-                #editor—wrapper {
+                #editor—wrapper-{{$property}} {
                     border: 1px solid #ccc;
                     z-index: 100; /* 按需定义 */
                 }
 
-                #toolbar-container {
+                #toolbar-container-{{$property}} {
                     border-bottom: 1px solid #ccc;
                 }
 
-                #editor-container {
+                #editor-container-{{$property}} {
                     height: 500px;
                 }
 
@@ -78,7 +78,7 @@
                     }
 
                     const editor = createEditor({
-                        selector: '#editor-container',
+                        selector: '#editor-container-{{$property}}',
                         html: @this.value,
                         config: editorConfig,
                         mode: 'default', // or 'simple'
@@ -88,7 +88,7 @@
 
                     const toolbar = createToolbar({
                         editor,
-                        selector: '#toolbar-container',
+                        selector: '#toolbar-container-{{$property}}',
                         config: toolbarConfig,
                         mode: 'default', // or 'simple'
                     })
