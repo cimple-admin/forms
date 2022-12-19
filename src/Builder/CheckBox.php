@@ -29,13 +29,6 @@ class CheckBox extends Component
         return $this;
     }
 
-    public function checked(): static
-    {
-        $this->value = true;
-
-        return $this;
-    }
-
     public function build(): array
     {
         return [
