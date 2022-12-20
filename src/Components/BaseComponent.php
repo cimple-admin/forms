@@ -20,7 +20,8 @@ class BaseComponent extends Component
     /**
      * livewire 声明周期函数
      * 序列化验证逻辑，如果不序列化 livewire 没法正确处理，不过这么处理感觉不是很好
-     * 等有更好的方案后再继续
+     * 等有更好的方案后再继续.
+     *
      * @param  array  $rules
      * @return void
      */
@@ -32,6 +33,7 @@ class BaseComponent extends Component
     /**
      * livewire 生命周期函数，触发属性更新的时候要向外部传递事件
      * 以及进行相关验证
+     *
      * @param $propertyName
      * @return void
      */
@@ -45,7 +47,8 @@ class BaseComponent extends Component
     }
 
     /**
-     * livewire 获取验证时候属性名称方法
+     * livewire 获取验证时候属性名称方法.
+     *
      * @return string[]
      */
     protected function validationAttributes(): array
@@ -54,7 +57,8 @@ class BaseComponent extends Component
     }
 
     /**
-     * livewire 获取验证条件方法，这里的作用就是把 mount 序列化的条件反序列化
+     * livewire 获取验证条件方法，这里的作用就是把 mount 序列化的条件反序列化.
+     *
      * @return array[]
      */
     public function rules(): array
@@ -68,7 +72,8 @@ class BaseComponent extends Component
     }
 
     /**
-     * livewire 渲染组件方法
+     * livewire 渲染组件方法.
+     *
      * @return Factory|View|Application
      */
     public function render(): Factory|View|Application
