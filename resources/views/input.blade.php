@@ -1,24 +1,7 @@
-<div class="form-control">
-    <label class="label">
-        <span class="label-text">{{$label}}</span>
-    </label>
-    <input type="{{$type}}" wire:model="value" placeholder="Type here" class="input input-bordered" />
-    <label class="label">
-        <span class="label-text-alt">
-            @error('value')
-                <span class="error text-error">{{ $message }}</span>
-            @else
-                {{$hint}}
-            @enderror
-            {{$hint}}
-         </span>
-    </label>
-    @once
-        @push('scripts')
-            <script>
-                // Your custom JavaScript...
-                console.log('abc')
-            </script>
-        @endpush
-    @endonce
+<div class="form-group">
+    <label for="input-{{$property}}">{{$label}}</label>
+    <input type="{{$type}}" name="{{$property}}" wire:model="value" class="form-control {{ $errors->has('value') ? 'is-invalid' : '' }}" id="input-{{$property}}" placeholder="Enter email">
+    @error('value')
+    <span id="input-{{$property}}-error" class="error invalid-feedback">{{ $message }}</span>
+    @enderror
 </div>

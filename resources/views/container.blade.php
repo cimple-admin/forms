@@ -1,4 +1,4 @@
-<div class="form-control w-full">
+<div class="">
     @foreach($forms as $form => $params)
         @php
             if (str_contains($form, ':')) {
