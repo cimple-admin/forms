@@ -15,7 +15,9 @@ class BaseComponent extends Component
     public string|array|bool $value; // 表单字段初始值
     public string $hint = ''; // 表单输入框的提示信息（这个是否后期还保留待定）
     public bool $hiddenLabel = false; // 是否隐藏表单的名称显示
+    public bool $inline = false; // 表单是否已横向方式显示
     protected string $viewName = ''; // 组件绑定的视图名称
+
 
     /**
      * livewire 声明周期函数

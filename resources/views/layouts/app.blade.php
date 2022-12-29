@@ -3,8 +3,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @livewireStyles
+    <link rel="stylesheet" href="{{asset('/vendor/forms/admin-lte/plugins/fontawesome-free/css/all.css')}}">
     <link rel="stylesheet" href="{{asset('/vendor/forms/admin-lte/css/adminlte.min.css')}}">
     @stack('style')
+    <style>
+        ion-icon {
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
 {{ $slot }}

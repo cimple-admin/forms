@@ -11,10 +11,12 @@ abstract class Component
     const COMPONENT_NAME = '';
 
     protected string $property;
-    protected string $label = '';
-    protected string $hint = '';
+    protected string $label;
+    protected string $hint;
     protected string|array|bool $value = '';
     protected bool $hiddenLabel = false;
+
+    protected bool $inline = false;
 
     public function __construct($property)
     {
@@ -58,6 +60,13 @@ abstract class Component
         return $this;
     }
 
+    public function inline(): static
+    {
+        $this->inline = true;
+
+        return $this;
+    }
+
     public function build(): array
     {
         return [
@@ -66,6 +75,8 @@ abstract class Component
             'label' => $this->label,
             'hint' => $this->hint,
             'value' => $this->value,
+            'hiddenLabel' => $this->hiddenLabel,
+            'inline' => $this->inline,
         ];
     }
 }
