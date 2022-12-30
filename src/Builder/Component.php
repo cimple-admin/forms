@@ -13,7 +13,7 @@ abstract class Component
     protected string $property;
     protected string $label;
     protected string $hint;
-    protected string|array|bool $value = '';
+    protected string|array|bool $value;
     protected bool $hiddenLabel = false;
 
     protected bool $inline = false;
@@ -73,8 +73,8 @@ abstract class Component
             'rules' => $this->rules,
             'property' => $this->property,
             'label' => $this->label,
-            'hint' => $this->hint,
-            'value' => $this->value,
+            'hint' => $this->hint ?? '',
+            'value' => $this->value ?? '',
             'hiddenLabel' => $this->hiddenLabel,
             'inline' => $this->inline,
         ];
