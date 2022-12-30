@@ -19,7 +19,6 @@ class BaseComponent extends Component
     public bool $inline = false; // 表单是否已横向方式显示
     protected string $viewName = ''; // 组件绑定的视图名称
 
-
     /**
      * livewire 声明周期函数
      * 序列化验证逻辑，如果不序列化 livewire 没法正确处理，不过这么处理感觉不是很好
