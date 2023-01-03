@@ -8,7 +8,8 @@ class TextInput extends Component
     public string $type = 'text';
 
     /**
-     * 设置 input 类型
+     * 设置 input 类型.
+     *
      * @param $type
      * @return $this
      */
