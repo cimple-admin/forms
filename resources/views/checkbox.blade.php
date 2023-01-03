@@ -1,23 +1,20 @@
-<div class="form-control">
-    @if(!$hiddenLabel)
-        <label class="label">
-            <span class="label-text">{{$label}}</span>
-        </label>
+<div class="form-group {{ $inline ? 'row' : '' }}">
+    @if($label && !$hiddenLabel)
+        <label for="input-{{$property}}" class="{{ $inline ? 'col-sm-2' : '' }} col-form-label">{{$label}}</label>
     @endif
-
-    @foreach($options as $optionValue => $option)
-        <label class="label cursor-pointer">
-            <span class="label-text">{{$option}}</span>
-            <input wire:model="value" type="checkbox" value="{{$optionValue}}" class="{{$type == 'toggle' ? 'toggle' : 'checkbox'}} {{$type}}-primary"/>
-        </label>
-    @endforeach
-    <span class="label-text-alt">
+    <div class="{{ $inline ? 'col-sm-10' : '' }}">
+        @foreach($options as $optionValue => $option)
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox"  wire:model="value" value="{{$optionValue}}" class="custom-control-input {{$type == 'toggle' ? 'toggle' : 'checkbox'}} {{ $errors->has('value') ? 'is-invalid' : '' }}"  id="checkBox-{{$property}}-{{$option}}">
+                <label class="custom-control-label" for="checkBox-{{$property}}-{{$option}}">{{$option}}</label>
+            </div>
+        @endforeach
         @error('value')
-            <span class="error text-error">{{ $message }}</span>
-        @else
-            @error('value.*')
-                <span class="error text-error">{{ $message }}</span>
-            @enderror
+        <span id="input-{{$property}}-error" class="error invalid-feedback" style="display: inline;">{{ $message }}</span>
         @enderror
-    </span>
+        @if($hint)
+            <span id="input-{{$property}}-hint" class="small"><i class="far fa-question-circle"></i> {{ $hint }}</span>
+        @endif
+    </div>
 </div>
+
