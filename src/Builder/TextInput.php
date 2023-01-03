@@ -7,6 +7,11 @@ class TextInput extends Component
     const COMPONENT_NAME = 'input-text';
     public string $type = 'text';
 
+    /**
+     * 设置 input 类型
+     * @param $type
+     * @return $this
+     */
     public function type($type): static
     {
         $this->type = $type;

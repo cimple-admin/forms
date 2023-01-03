@@ -2,9 +2,6 @@
 
 namespace CimpleAdmin\Forms\Components;
 
-class PasswordInput extends BaseComponent
+class PasswordInput extends TextInput
 {
-    public string $type = 'password'; // Input 类型
-    public string $hint = '';
-    protected string $viewName = 'form::input';
 }

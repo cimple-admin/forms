@@ -2,18 +2,11 @@
 
 namespace CimpleAdmin\Forms\Builder;
 
-class PasswordInput extends Component
+class PasswordInput extends TextInput
 {
     const COMPONENT_NAME = 'input-password';
 
-    public function build(): array
-    {
-        return [
-            'rules' => $this->rules,
-            'property' => $this->property,
-            'label' => $this->label,
-            'hint' => $this->hint,
-            'value' => $this->value,
-        ];
-    }
+    public string $type = 'password';
+
+    // TODO 准备给 password 增加一个查看密码的选项
 }
