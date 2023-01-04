@@ -10,7 +10,7 @@
             </div>
         @endforeach
         @error('value')
-        <span id="input-{{$property}}-error" class="error invalid-feedback" style="display: inline;">{{ $message }}</span>
+        <span id="input-{{$property}}-error" class="error invalid-feedback">{{ $message }}</span>
         @enderror
         @if($hint)
             <span id="input-{{$property}}-hint" class="small"><i class="far fa-question-circle"></i> {{ $hint }}</span>

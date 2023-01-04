@@ -5,12 +5,8 @@
     @livewireStyles
     <link rel="stylesheet" href="{{asset('/vendor/forms/admin-lte/plugins/fontawesome-free/css/all.css')}}">
     <link rel="stylesheet" href="{{asset('/vendor/forms/admin-lte/css/adminlte.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/vendor/forms/app.css')}}">
     @stack('style')
-    <style>
-        ion-icon {
-            display: inline-block;
-        }
-    </style>
 </head>
 <body>
 {{ $slot }}
