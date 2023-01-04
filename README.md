@@ -2,7 +2,7 @@
 
 这是一个基于 [livewire](https://laravel-livewire.com/) 的 [laravel](https://laravel.com/) 表单构造器。
 
-前端基于 [Tailwind](https://tailwindcss.com/) 和 [daisyui](https://daisyui.com/)
+前端基于 [AdminLTE](https://adminlte.io/)
 
 ### 如何使用
 > 项目目前还处于开发期，变动会很大，不建议在生产环境中使用。
