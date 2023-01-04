@@ -1,3 +1,8 @@
 span.invalid-feedback {
     display: inline;
 }
+
+.custom-control-label::before {
+    box-shadow: none;
+    background-color: #FFFFFF;
+}
