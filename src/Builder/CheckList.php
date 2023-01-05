@@ -2,39 +2,24 @@
 
 namespace CimpleAdmin\Forms\Builder;
 
+use CimpleAdmin\Forms\Builder\Traits\HasOptions;
+use CimpleAdmin\Forms\Builder\Traits\HasRuleItemInArray;
+use CimpleAdmin\Forms\Builder\Traits\HasRuleItemInOptions;
 use Illuminate\Validation\Rule;
 
 class CheckList extends Component
 {
+    use HasOptions;
+    use HasRuleItemInArray;
+    use HasRuleItemInOptions;
+
     const COMPONENT_NAME = 'checkbox';
-    private array $options = [];
 
     public function __construct($property)
     {
         parent::__construct($property);
         $this->rules['value'][] = 'array';
         $this->value = [];
-    }
-
-    public function options($options): static
-    {
-        $this->options = $options;
-
-        return $this;
-    }
-
-    public function itemInArray($options): static
-    {
-        $this->rules['value.*'][] = Rule::in($options);
-
-        return $this;
-    }
-
-    public function itemInOption(): static
-    {
-        $this->rules['value.*'][] = Rule::in(array_keys($this->options));
-
-        return $this;
     }
 
     public function build(): array

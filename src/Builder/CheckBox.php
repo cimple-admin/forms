@@ -2,6 +2,8 @@
 
 namespace CimpleAdmin\Forms\Builder;
 
+use CimpleAdmin\Forms\Builder\Traits\HasOptions;
+
 class CheckBox extends Component
 {
     const COMPONENT_NAME = 'checkbox';

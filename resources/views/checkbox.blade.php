@@ -5,12 +5,16 @@
     <div class="{{ $inline ? 'col-sm-10' : '' }}">
         @foreach($options as $optionValue => $option)
             <div class="custom-control  {{$type == 'toggle' ? 'custom-switch' : 'custom-checkbox'}}">
-                <input type="checkbox"  wire:model="value" value="{{$optionValue}}" class="custom-control-input  {{ $errors->has('value') ? 'is-invalid' : '' }}"  id="checkBox-{{$property}}-{{$optionValue}}">
+                <input type="checkbox"  wire:model="value" value="{{$optionValue}}" class="custom-control-input  {{ $errors->has('value') ? 'is-invalid' : '' }} {{ $errors->has('value.*') ? 'is-invalid' : '' }}"  id="checkBox-{{$property}}-{{$optionValue}}">
                 <label class="custom-control-label" for="checkBox-{{$property}}-{{$optionValue}}">{{$option}}</label>
             </div>
         @endforeach
         @error('value')
         <span id="input-{{$property}}-error" class="error invalid-feedback">{{ $message }}</span>
+        @else
+            @error('value.*')
+            <span id="input-{{$property}}-error" class="error invalid-feedback">{{ $message }}</span>
+            @enderror
         @enderror
         @if($hint)
             <span id="input-{{$property}}-hint" class="small"><i class="far fa-question-circle"></i> {{ $hint }}</span>
