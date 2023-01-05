@@ -5,7 +5,6 @@ namespace CimpleAdmin\Forms\Builder;
 use CimpleAdmin\Forms\Builder\Traits\HasOptions;
 use CimpleAdmin\Forms\Builder\Traits\HasRuleItemInArray;
 use CimpleAdmin\Forms\Builder\Traits\HasRuleItemInOptions;
-use Illuminate\Validation\Rule;
 
 class CheckList extends Component
 {
