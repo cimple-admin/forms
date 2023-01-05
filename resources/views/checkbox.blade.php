@@ -4,9 +4,9 @@
     @endif
     <div class="{{ $inline ? 'col-sm-10' : '' }}">
         @foreach($options as $optionValue => $option)
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox"  wire:model="value" value="{{$optionValue}}" class="custom-control-input {{$type == 'toggle' ? 'toggle' : 'checkbox'}} {{ $errors->has('value') ? 'is-invalid' : '' }}"  id="checkBox-{{$property}}-{{$option}}">
-                <label class="custom-control-label" for="checkBox-{{$property}}-{{$option}}">{{$option}}</label>
+            <div class="custom-control  {{$type == 'toggle' ? 'custom-switch' : 'custom-checkbox'}}">
+                <input type="checkbox"  wire:model="value" value="{{$optionValue}}" class="custom-control-input  {{ $errors->has('value') ? 'is-invalid' : '' }}"  id="checkBox-{{$property}}-{{$optionValue}}">
+                <label class="custom-control-label" for="checkBox-{{$property}}-{{$optionValue}}">{{$option}}</label>
             </div>
         @endforeach
         @error('value')

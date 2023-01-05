@@ -1,1 +1,1 @@
-span.invalid-feedback{display:inline}.custom-control-label:before{box-shadow:none;background-color:#fff}
+span.invalid-feedback{display:inline}.custom-control-label:before{box-shadow:none;background-color:#fff}.custom-switch .custom-control-input:checked~.custom-control-label:after{background-color:#fff}
