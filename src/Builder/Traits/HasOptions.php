@@ -12,5 +12,4 @@ trait HasOptions
 
         return $this;
     }
-
 }
