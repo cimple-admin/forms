@@ -1,10 +1,5 @@
-<div class="form-control">
-    @if(!$hiddenLabel)
-        <label class="label">
-            <span class="label-text">{{$label}}</span>
-        </label>
-    @endif
-
+<div class="form-group {{ $inline ? 'row' : '' }}">
+    @include('form::base.label')
     <div wire:ignore>
         <select wire:ignore.self class="select select-primary w-full"
                 data-trigger
@@ -18,15 +13,8 @@
         </select>
     </div>
 
-    <span class="label-text-alt">
-        @error('value')
-            <span class="error text-error">{{ $message }}</span>
-        @else
-            @error('value.*')
-            <span class="error text-error">{{ $message }}</span>
-            @enderror
-            @enderror
-    </span>
+    @include('form::base.errors')
+    @include('form::base.hint')
     @once
         @push('style')
             <link rel="stylesheet" href="{{asset('/vendor/forms/choices/styles/choices.css')}}">
@@ -52,18 +40,14 @@
                         'change',
                         function (event) {
                             // do something creative here...
-                            @this.
-                            value = choices.getValue(true);
+                            @this.value = choices.getValue(true);
                         },
                         false,
                     );
 
-                    if (@this.
-                    value
-                )
+                    if (@this.value)
                     {
-                        choices.setChoiceByValue(@this.value
-                    )
+                        choices.setChoiceByValue(@this.value)
                     }
                 })
             </script>
