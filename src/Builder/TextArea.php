@@ -22,13 +22,9 @@ class TextArea extends Component
 
     public function build(): array
     {
-        return [
-            'rules' => $this->rules,
-            'property' => $this->property,
-            'label' => $this->label,
-            'value' => $this->value,
-            'hiddenLabel' => $this->hiddenLabel,
-            'rows' => $this->rows,
-        ];
+        $params = parent::build();
+        $params['rows'] = $this->rows;
+
+        return $params;
     }
 }

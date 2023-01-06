@@ -1,10 +1,8 @@
-<div class="form-control">
-    <label class="label">
-        <span class="label-text">{{$label}}</span>
-    </label>
-    <textarea class="textarea textarea-bordered" rows="{{$rows}}" placeholder="Bio" wire:model="value"></textarea>
-    <label class="label">
-{{--        <span class="label-text-alt">Your bio</span>--}}
-{{--        <span class="label-text-alt">Alt label</span>--}}
-    </label>
+<div class="form-group {{ $inline ? 'row' : '' }}">
+    @include('form::base.label')
+    <div class="{{ $inline ? 'col-sm-10' : '' }}">
+        <textarea class="form-control"  rows="{{$rows}}" placeholder="{{$placeHolder}}"></textarea>
+        @include('form::base.errors')
+        @include('form::base.hint')
+    </div>
 </div>
