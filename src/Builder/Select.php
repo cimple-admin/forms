@@ -5,7 +5,6 @@ namespace CimpleAdmin\Forms\Builder;
 use CimpleAdmin\Forms\Builder\Traits\HasOptions;
 use CimpleAdmin\Forms\Builder\Traits\HasRuleSingleValueItemInArray;
 use CimpleAdmin\Forms\Builder\Traits\HasRuleSingleValueItemInOptions;
-use Illuminate\Validation\Rule;
 
 class Select extends Component
 {
