@@ -5,7 +5,6 @@ namespace CimpleAdmin\Forms\Builder;
 use CimpleAdmin\Forms\Builder\Traits\HasOptions;
 use CimpleAdmin\Forms\Builder\Traits\HasRuleSingleValueItemInArray;
 use CimpleAdmin\Forms\Builder\Traits\HasRuleSingleValueItemInOptions;
-use Illuminate\Validation\Rule;
 
 class Radio extends Component
 {
@@ -14,10 +13,6 @@ class Radio extends Component
     use HasRuleSingleValueItemInOptions;
 
     const COMPONENT_NAME = 'radio';
-
-
-
-
 
     public function build(): array
     {
