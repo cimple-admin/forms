@@ -3,31 +3,21 @@
 namespace CimpleAdmin\Forms\Builder;
 
 use CimpleAdmin\Forms\Builder\Traits\HasOptions;
-use CimpleAdmin\Forms\Builder\Traits\HasRuleItemInArray;
-use CimpleAdmin\Forms\Builder\Traits\HasRuleItemInOptions;
+use CimpleAdmin\Forms\Builder\Traits\HasRuleSingleValueItemInArray;
+use CimpleAdmin\Forms\Builder\Traits\HasRuleSingleValueItemInOptions;
 use Illuminate\Validation\Rule;
 
 class Radio extends Component
 {
     use HasOptions;
-//    use HasRuleItemInArray;
-//    use HasRuleItemInOptions;
+    use HasRuleSingleValueItemInArray;
+    use HasRuleSingleValueItemInOptions;
 
     const COMPONENT_NAME = 'radio';
 
-    public function itemInArray($options): static
-    {
-        $this->rules['value'][] = Rule::in($options);
 
-        return $this;
-    }
 
-    public function itemInOption(): static
-    {
-        $this->rules['value'][] = Rule::in(array_keys($this->options));
 
-        return $this;
-    }
 
     public function build(): array
     {

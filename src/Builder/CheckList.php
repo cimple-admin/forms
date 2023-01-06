@@ -3,14 +3,14 @@
 namespace CimpleAdmin\Forms\Builder;
 
 use CimpleAdmin\Forms\Builder\Traits\HasOptions;
-use CimpleAdmin\Forms\Builder\Traits\HasRuleItemInArray;
-use CimpleAdmin\Forms\Builder\Traits\HasRuleItemInOptions;
+use CimpleAdmin\Forms\Builder\Traits\HasRuleArrayValueItemInArray;
+use CimpleAdmin\Forms\Builder\Traits\HasRuleArrayValueItemInOptions;
 
 class CheckList extends Component
 {
     use HasOptions;
-    use HasRuleItemInArray;
-    use HasRuleItemInOptions;
+    use HasRuleArrayValueItemInArray;
+    use HasRuleArrayValueItemInOptions;
 
     const COMPONENT_NAME = 'checkbox';
 
