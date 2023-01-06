@@ -1,28 +1,14 @@
-<div class="form-control">
-    @if(!$hiddenLabel)
-        <label class="label">
-            <span class="label-text">{{$label}}</span>
-        </label>
-    @endif
+<div class="form-group  {{ $inline ? 'row' : '' }}">
+    @include('form::base.label')
+    <div class="{{ $inline ? 'col-sm-10' : '' }}">
+        <select wire:model="value" class="custom-select">
+            <option>请选择</option>
+            @foreach($options as $optionValue => $option)
+                <option value="{{$optionValue}}">{{$option}}</option>
+            @endforeach
+        </select>
+        @include('form::base.errors')
+        @include('form::base.hint')
+    </div>
 
-    <select wire:model="value" class="select select-primary w-full"
-            data-trigger
-            id="choices-multiple-default"
-            placeholder="This is a placeholder"
-    >
-        <option>请选择</option>
-        @foreach($options as $optionValue => $option)
-            <option value="{{$optionValue}}">{{$option}}</option>
-        @endforeach
-    </select>
-
-    <span class="label-text-alt pt-2">
-        @error('value')
-            <span class="error text-error">{{ $message }}</span>
-        @else
-            @error('value.*')
-            <span class="error text-error">{{ $message }}</span>
-            @enderror
-            @enderror
-    </span>
 </div>

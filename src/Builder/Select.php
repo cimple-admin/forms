@@ -2,47 +2,29 @@
 
 namespace CimpleAdmin\Forms\Builder;
 
+use CimpleAdmin\Forms\Builder\Traits\HasOptions;
+use CimpleAdmin\Forms\Builder\Traits\HasRuleSingleValueItemInArray;
+use CimpleAdmin\Forms\Builder\Traits\HasRuleSingleValueItemInOptions;
 use Illuminate\Validation\Rule;
 
 class Select extends Component
 {
+    use HasOptions;
+    use HasRuleSingleValueItemInArray;
+    use HasRuleSingleValueItemInOptions;
+
     const COMPONENT_NAME = 'select';
-    private array $options = [];
 
     public function __construct($property)
     {
         parent::__construct($property);
     }
 
-    public function options($options): static
-    {
-        $this->options = $options;
-
-        return $this;
-    }
-
-    public function itemInArray($options): static
-    {
-        $this->rules['value'][] = Rule::in($options);
-
-        return $this;
-    }
-
-    public function itemInOption(): static
-    {
-        $this->rules['value'][] = Rule::in(array_keys($this->options));
-
-        return $this;
-    }
-
     public function build(): array
     {
-        return [
-            'rules' => $this->rules,
-            'property' => $this->property,
-            'label' => $this->label,
-            'options' => $this->options,
-            'value' => $this->value,
-        ];
+        $params = parent::build();
+        $params['options'] = $this->options;
+
+        return $params;
     }
 }

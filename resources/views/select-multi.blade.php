@@ -1,6 +1,6 @@
 <div class="form-group {{ $inline ? 'row' : '' }}">
     @include('form::base.label')
-    <div wire:ignore>
+    <div wire:ignore  class="{{ $inline ? 'col-sm-10' : '' }}">
         <select wire:ignore.self class="select select-primary w-full"
                 data-trigger
                 id="choices-multiple-default"
@@ -11,10 +11,9 @@
                 <option value="{{$optionValue}}">{{$option}}</option>
             @endforeach
         </select>
+        @include('form::base.errors')
+        @include('form::base.hint')
     </div>
-
-    @include('form::base.errors')
-    @include('form::base.hint')
     @once
         @push('style')
             <link rel="stylesheet" href="{{asset('/vendor/forms/choices/styles/choices.css')}}">
