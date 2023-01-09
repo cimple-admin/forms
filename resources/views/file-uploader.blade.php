@@ -1,94 +1,132 @@
-<div class="form-control">
-    <label class="label">
-        <span class="label-text">{{$label}}</span>
-    </label>
-    <div id="{{$property}}UploadContainer"
-         class="file_upload p-5 relative w-full border-4 border-dotted border-gray-300 rounded-lg">
-        <svg class="text-indigo-500 w-24 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none"
-             viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
-        </svg>
-        <div class="input_field flex flex-col w-max mx-auto text-center">
-            <label>
-                <input id="{{$property}}UploadBtn" class="text-sm cursor-pointer w-36 hidden" type="file" multiple/>
-                <div class="text bg-indigo-600 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-indigo-500">
-                    Select
+<div class="form-group {{ $inline ? 'row' : '' }}">
+    @include('form::base.label')
+    <div class="{{ $inline ? 'col-sm-10' : '' }}">
+        <div id="actions" class="row">
+            <div class="col-lg-6">
+                <div class="btn-group w-100">
+                      <span class="btn btn-success col fileinput-button">
+                        <i class="fas fa-plus"></i>
+                        <span>Add files</span>
+                      </span>
+                    <button type="submit" class="btn btn-primary col start">
+                        <i class="fas fa-upload"></i>
+                        <span>Start upload</span>
+                    </button>
+                    <button type="reset" class="btn btn-warning col cancel">
+                        <i class="fas fa-times-circle"></i>
+                        <span>Cancel upload</span>
+                    </button>
                 </div>
-            </label>
-
-            <div class="title text-indigo-500 uppercase">or drop files here</div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center">
+                <div class="fileupload-process w-100">
+                    <div id="total-progress" class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                        <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="table table-striped files" id="previews">
+            <div id="template" class="row mt-2">
+                <div class="col-auto">
+                    <span class="preview"><img src="data:," alt="" data-dz-thumbnail /></span>
+                </div>
+                <div class="col d-flex align-items-center">
+                    <p class="mb-0">
+                        <span class="lead" data-dz-name></span>
+                        (<span data-dz-size></span>)
+                    </p>
+                    <strong class="error text-danger" data-dz-errormessage></strong>
+                </div>
+                <div class="col-4 d-flex align-items-center">
+                    <div class="progress progress-striped active w-100" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                        <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                    </div>
+                </div>
+                <div class="col-auto d-flex align-items-center">
+                    <div class="btn-group">
+                        <button class="btn btn-primary start">
+                            <i class="fas fa-upload"></i>
+                            <span>Start</span>
+                        </button>
+                        <button data-dz-remove class="btn btn-warning cancel">
+                            <i class="fas fa-times-circle"></i>
+                            <span>Cancel</span>
+                        </button>
+                        <button data-dz-remove class="btn btn-danger delete">
+                            <i class="fas fa-trash"></i>
+                            <span>Delete</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @include('form::base.errors')
+        @include('form::base.hint')
     </div>
-    <label class="label">
-        <span class="label-text-alt">
-            @error('value')
-                <span class="error text-error">{{ $message }}</span>
-            @else
-                {{$hint}}
-                @enderror
-                {{$hint}}
-         </span>
-    </label>
     @once
         @push('style')
+            <link rel="stylesheet" href="{{asset('/vendor/forms/admin-lte/plugins/dropzone/min/dropzone.min.css')}}">
         @endpush
         @push('scripts')
-            <script src="{{asset('/vendor/forms/plupload/plupload.full.min.js')}}"></script>
-            <!-- activate Georgian translation -->
-            <script type="text/javascript" src="{{asset('/vendor/forms/plupload/i18n/zh_CN.js')}}"></script>
-            <script !src="">
-                document.addEventListener('livewire:load', function () {
-                    const containerEle = document.getElementById(@this.property + 'UploadContainer')
-                    var uploader = new plupload.Uploader({
-                        runtimes: 'html5',
-                        drop_element: containerEle,
-                        browse_button: @this.property + 'UploadBtn', // you can pass in id...
-                        container: containerEle, // ... or DOM Element itself
-
-                        url: "/cimple-admin/form/file/upload",
-
-                        chunk_size: '10mb',
-                        filters: {
-                            max_file_size: '1000mb',
-                            // mime_types: [
-                            //     {title : "Image files", extensions : "jpg,gif,png"},
-                            //     {title : "Zip files", extensions : "zip"}
-                            // ]
-                        },
-
-
-                        init: {
-                            PostInit: function () {
-                                // document.getElementById('filelist').innerHTML = '';
-                                //
-                                // document.getElementById('uploadfiles').onclick = function () {
-                                //     uploader.start();
-                                //     return false;
-                                // };
-                            },
-
-                            FilesAdded: function (up, files) {
-                                plupload.each(files, function (file) {
-                                    console.log(file);
-                                });
-                                uploader.start();
-                            },
-
-                            UploadProgress: function (up, file) {
-                                console.log(file.percent);
-                            },
-
-                            Error: function (up, err) {
-                                console.log(err);
-                            }
-                        }
-                    });
-
-                    uploader.init();
-                })
-
-            </script>
+            <script src="{{asset('/vendor/forms/admin-lte/plugins/dropzone/min/dropzone.min.js')}}"></script>
         @endpush
     @endonce
+    @push('scripts')
+        <script !src="">
+            document.addEventListener('livewire:load', function () {
+                Dropzone.autoDiscover = false
+
+                // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
+                var previewNode = document.querySelector("#template")
+                previewNode.id = ""
+                var previewTemplate = previewNode.parentNode.innerHTML
+                previewNode.parentNode.removeChild(previewNode)
+
+                var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
+                    url: "/cimple-admin/form/file/upload", // Set the url
+                    thumbnailWidth: 80,
+                    thumbnailHeight: 80,
+                    parallelUploads: 20,
+                    previewTemplate: previewTemplate,
+                    autoQueue: false, // Make sure the files aren't queued until manually added
+                    previewsContainer: "#previews", // Define the container to display the previews
+                    clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
+                })
+
+                myDropzone.on("addedfile", function(file) {
+                    // Hookup the start button
+                    file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file) }
+                })
+
+                // Update the total progress bar
+                myDropzone.on("totaluploadprogress", function(progress) {
+                    document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
+                })
+
+                myDropzone.on("sending", function(file) {
+                    // Show the total progress bar when upload starts
+                    document.querySelector("#total-progress").style.opacity = "1"
+                    // And disable the start button
+                    file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
+                })
+
+                // Hide the total progress bar when nothing's uploading anymore
+                myDropzone.on("queuecomplete", function(progress) {
+                    document.querySelector("#total-progress").style.opacity = "0"
+                })
+
+                // Setup the buttons for all transfers
+                // The "add files" button doesn't need to be setup because the config
+                // `clickable` has already been specified.
+                document.querySelector("#actions .start").onclick = function() {
+                    myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
+                }
+                document.querySelector("#actions .cancel").onclick = function() {
+                    myDropzone.removeAllFiles(true)
+                }
+                // DropzoneJS Demo Code End
+            })
+        </script>
+    @endpush
 </div>
