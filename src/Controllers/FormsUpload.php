@@ -14,29 +14,18 @@ class FormsUpload
             $chunkIndex = $request->post('dzchunkindex');
             $fileName = $request->post('dzuuid');
             $chunkCount = $request->post('dztotalchunkcount');
+            $file = $request->file('file');
+            $explodeOriginFileName = explode('.', $file->getClientOriginalName());
             $fileExt = '';
-            foreach ($request->file('file') as $file) {
-                // 先将所有分块集中存储
-                $explodeOriginFileName = explode('.', $file->getClientOriginalName());
-                if (empty($fileExt) && isset($explodeOriginFileName[1])) {
-                    $fileExt = $explodeOriginFileName[1];
-                }
-                $uploadSuccess = Storage::putFileAs('chunk/'.$fileName, $file, 'chunk-'.sprintf('%0'.mb_strlen($chunkCount).'d', $chunkIndex));
-
-//                if ($chunkIndex == 0) {
-//                    $uploadSuccess = Storage::put('upload/'.$fileName.($fileExt ? ('.'.$fileExt) : ''), $file->get());
-//                } else {
-//                    $uploadSuccess = Storage::append('upload/'.$fileName.($fileExt ? ('.'.$fileExt) : ''), $file->get(), null);
-//                }
-//                 当所有文件都上传后，合并全部文件
-                $allChunkFiles = Storage::allFiles('chunk/'.$fileName);
-                if (count($allChunkFiles) == $chunkCount) {
-                    foreach ($allChunkFiles as $chunkFile) {
-                        Storage::append('upload/'.$fileName.($fileExt ? ('.'.$fileExt) : ''), Storage::get($chunkFile), null);
-                    }
-                    // 合并文件后，移除文件
-                    Storage::deleteDirectory('chunk/'.$fileName);
-                }
+            if (isset($explodeOriginFileName[1])) {
+                $fileExt = $explodeOriginFileName[1];
+            }
+            // 先将所有分块集中存储
+            if ($chunkIndex == 0) {
+                $uploadSuccess = Storage::put('upload/'.$fileName.($fileExt ? ('.'.$fileExt) : ''), $file->get());
+            } else {
+                $uploadSuccess = Storage::append('upload/'.$fileName.($fileExt ? ('.'.$fileExt) : ''), $file->get(),
+                    null);
             }
         }
         if ($uploadSuccess) {

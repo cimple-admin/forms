@@ -59,7 +59,7 @@
 * [x] textarea
 * [x] select
 * [x] wangeditor
-* [x] fileupload (准备从 dropzone 切换到 plupload ，可能plupload 的事件处理更符合我的想法)
+* [x] fileupload (dropzone)
 
 上面这些仅仅是功能完成了，后续还有抽象、样式优化、功能细节优化等持续功能要做
 
