@@ -4,12 +4,16 @@
 
 前端基于 [AdminLTE](https://adminlte.io/)
 
+[![Security Status](https://www.murphysec.com/platform3/v3/badge/1611441299463372800.svg)](https://www.murphysec.com/accept?code=5607fe9d76703e206fe71e9aa0f45ca1&type=1&from=2&t=2)
+
 ### 如何使用
+
 > 项目目前还处于开发期，变动会很大，不建议在生产环境中使用。
-> 
+>
 > 使用本扩展需要对 [livewire](https://laravel-livewire.com/) 有足够的了解。
 
 #### 在新项目中安装
+
 1. 创建 laravel 项目后，安装扩展 `composer require cimple-admin/forms`
 2. `./vendor/bin/sail artisan vendor:publish --tag=cimple-form` 使用这个命令把资源文件复制到自己的项目中
 3. 安装后就可以使用 `artisan make:livewire XXX` 命令来创建自己的组件了。
