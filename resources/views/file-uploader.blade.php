@@ -1,7 +1,12 @@
 <div class="form-group {{ $inline ? 'row' : '' }}">
     @include('form::base.label')
     <div class="{{ $inline ? 'col-sm-10' : '' }}">
-        <div id="testUpload" class="dropzone"></div>
+        <div id="testUpload" class="dropzone">
+            <div class="dz-default dz-message">
+                <ion-icon class="upload-icon" name="cloud-upload-outline"></ion-icon>
+                <button class="btn btn-primary" type="button">{{$buttonText}}</button>
+            </div>
+        </div>
         @include('form::base.errors')
         @include('form::base.hint')
     </div>
@@ -10,8 +15,16 @@
             <link rel="stylesheet" href="{{asset('/vendor/forms/admin-lte/plugins/dropzone/min/dropzone.min.css')}}">
             <style>
                 .dropzone {
-                    border: 1px solid rgba(0, 0, 0, .3);
+                    border: 1px dashed #ced4da;
                     border-radius: 4px;
+                    min-height: 206px;
+                }
+
+                ion-icon.upload-icon {
+                    font-size: 58px;
+                    padding-bottom: 16px;
+                    display: block;
+                    margin: 0 auto;
                 }
             </style>
         @endpush
@@ -32,7 +45,6 @@
 
                 var myDropzone = new Dropzone('#testUpload', { // Make the whole body a dropzone
                     url: @this.uploadUrl, // Set the url
-                    dictDefaultMessage: @this.buttonText,
                     thumbnailWidth: 80,
                     thumbnailHeight: 80,
                     parallelUploads: 20,
