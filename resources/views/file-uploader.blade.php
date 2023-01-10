@@ -75,6 +75,9 @@
     @push('scripts')
         <script !src="">
             document.addEventListener('livewire:load', function () {
+                console.log(@this.maxFileSize
+            )
+
                 Dropzone.autoDiscover = false
 
                 // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
@@ -91,7 +94,7 @@
                     chunking: true,
                     forceChunking: true,
                     chunkSize: @this.chunkSize,
-                    maxFilesize: 1024 * 1024 * 1024,
+                    maxFilesize: @this.maxFileSize,
                     previewTemplate: previewTemplate,
                     autoQueue: false, // Make sure the files aren't queued until manually added
                     previewsContainer: "#previews", // Define the container to display the previews
