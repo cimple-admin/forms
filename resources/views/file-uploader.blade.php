@@ -90,7 +90,7 @@
                     parallelUploads: 20,
                     chunking: true,
                     forceChunking: true,
-                    chunkSize: 5 * 1024 * 1024,
+                    chunkSize: @this.chunkSize,
                     maxFilesize: 1024 * 1024 * 1024,
                     previewTemplate: previewTemplate,
                     autoQueue: false, // Make sure the files aren't queued until manually added
