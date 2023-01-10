@@ -75,9 +75,6 @@
     @push('scripts')
         <script !src="">
             document.addEventListener('livewire:load', function () {
-                console.log(@this.maxFileSize
-            )
-
                 Dropzone.autoDiscover = false
 
                 // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
@@ -87,7 +84,7 @@
                 previewNode.parentNode.removeChild(previewNode)
 
                 var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-                    url: "/cimple-admin/form/file/upload", // Set the url
+                    url: @this.uploadUrl, // Set the url
                     thumbnailWidth: 80,
                     thumbnailHeight: 80,
                     parallelUploads: 20,
