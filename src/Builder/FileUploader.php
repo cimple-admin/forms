@@ -9,9 +9,10 @@ class FileUploader extends Component
     private int $chunkSize; // 分块大小
     private int $maxFileSize; // 最大文件大小
     private string $buttonText = '点击或拖拽文件到此区域上传';
+    private int|null $maxFiles = null;
     private string $uploadUrl;
 
-    public function chunkSize($chunkSize): static
+    public function chunkSize(int $chunkSize): static
     {
         $this->chunkSize = $chunkSize;
 
@@ -22,23 +23,37 @@ class FileUploader extends Component
      * @param $maxFileSize
      * @return $this
      */
-    public function maxFileSize($maxFileSize): static
+    public function maxFileSize(int $maxFileSize): static
     {
         $this->maxFileSize = $maxFileSize / 1024 / 1024;
 
         return $this;
     }
 
-    public function uploadUrl($uploadUrl): static
+    public function uploadUrl(string $uploadUrl): static
     {
         $this->uploadUrl = $uploadUrl;
 
         return $this;
     }
 
-    public function buttonMessage($buttonMessage): static
+    public function buttonMessage(string $buttonMessage): static
     {
         $this->buttonText = $buttonMessage;
+
+        return $this;
+    }
+
+    public function singleFile(): static
+    {
+        $this->maxFiles = 1;
+
+        return $this;
+    }
+
+    public function maxFiles(int $maxFiles): static
+    {
+        $this->maxFiles = $maxFiles;
 
         return $this;
     }
@@ -50,6 +65,7 @@ class FileUploader extends Component
         $params['maxFileSize'] = $this->maxFileSize ?? 200;
         $params['uploadUrl'] = $this->uploadUrl ?? '/cimple-admin/form/file/upload';
         $params['buttonText'] = $this->buttonText;
+        $params['maxFiles'] = $this->maxFiles;
 
         return $params;
     }

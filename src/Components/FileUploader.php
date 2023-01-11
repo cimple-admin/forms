@@ -7,6 +7,7 @@ class FileUploader extends BaseComponent
     public int $chunkSize;
     public int $maxFileSize;
     public string $buttonText;
+    public int|null $maxFiles;
     public string $uploadUrl;
 
     protected string $viewName = 'form::file-uploader';
