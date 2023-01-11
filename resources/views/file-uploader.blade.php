@@ -4,7 +4,7 @@
         <div id="testUpload" class="dropzone">
             <div class="dz-default dz-message">
                 <ion-icon class="upload-icon" name="cloud-upload-outline"></ion-icon>
-                <button class="btn btn-primary" type="button">{{$buttonText}}</button>
+                <button class="btn btn-primary btn-sm" type="button">{{$buttonText}}</button>
             </div>
         </div>
         @include('form::base.errors')
@@ -52,35 +52,36 @@
                     forceChunking: true,
                     chunkSize: @this.chunkSize,
                     maxFilesize: @this.maxFileSize,
+                    maxFiles: @this.maxFiles
                     // previewTemplate: previewTemplate,
-                    autoQueue: false, // Make sure the files aren't queued until manually added
+                    // autoQueue: false, // Make sure the files aren't queued until manually added
                     // previewsContainer: "#previews", // Define the container to display the previews
                     // clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
                 })
 
-                myDropzone.on("addedfile", function (file) {
-                    // Hookup the start button
-                    file.previewElement.querySelector(".start").onclick = function () {
-                        myDropzone.enqueueFile(file)
-                    }
-                })
-
-                // Update the total progress bar
-                myDropzone.on("totaluploadprogress", function(progress) {
-                    document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
-                })
-
-                myDropzone.on("sending", function(file) {
-                    // Show the total progress bar when upload starts
-                    document.querySelector("#total-progress").style.opacity = "1"
-                    // And disable the start button
-                    file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
-                })
-
-                // Hide the total progress bar when nothing's uploading anymore
-                myDropzone.on("queuecomplete", function (progress) {
-                    document.querySelector("#total-progress").style.opacity = "0"
-                })
+                // myDropzone.on("addedfile", function (file) {
+                //     // Hookup the start button
+                //     file.previewElement.querySelector(".start").onclick = function () {
+                //         myDropzone.enqueueFile(file)
+                //     }
+                // })
+                //
+                // // Update the total progress bar
+                // myDropzone.on("totaluploadprogress", function(progress) {
+                //     document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
+                // })
+                //
+                // myDropzone.on("sending", function(file) {
+                //     // Show the total progress bar when upload starts
+                //     document.querySelector("#total-progress").style.opacity = "1"
+                //     // And disable the start button
+                //     file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
+                // })
+                //
+                // // Hide the total progress bar when nothing's uploading anymore
+                // myDropzone.on("queuecomplete", function (progress) {
+                //     document.querySelector("#total-progress").style.opacity = "0"
+                // })
 
                 // Setup the buttons for all transfers
                 // The "add files" button doesn't need to be setup because the config

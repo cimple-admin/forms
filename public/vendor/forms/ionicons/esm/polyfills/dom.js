@@ -659,7 +659,9 @@
         va ? d(HTMLElement.prototype, va) : na ? d(Element.prototype, na) : console.warn("Custom Elements: `Element#insertAdjacentHTML` was not patched.");
         Y(c, Element.prototype, {h: oa, append: pa});
         Aa(c)
-    }var Z = window.customElements;
+    }
+
+    var Z = window.customElements;
     if (!Z || Z.forcePolyfill || "function" != typeof Z.define || "function" != typeof Z.get) {
         var X = new u;
         xa();
