@@ -12,6 +12,8 @@ class FileUploader extends BaseComponent
     public string $dictFallbackMessage;
     public string $dictFileTooBig;
     public string $dictInvalidFileType;
+    public string $dictResponseError;
+    public string $dictMaxFilesExceeded;
 
     protected string $viewName = 'form::file-uploader';
 }

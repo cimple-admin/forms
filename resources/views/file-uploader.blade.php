@@ -55,7 +55,9 @@
                     maxFiles: @this.maxFiles,
                     dictFallbackMessage: @this.dictFallbackMessage,
                     dictFileTooBig: @this.dictFileTooBig,
-                    dictInvalidFileType: $this.dictInvalidFileType,
+                    dictInvalidFileType: @this.dictInvalidFileType,
+                    dictResponseError: @this.dictResponseError,
+                    dictMaxFilesExceeded: @this.dictMaxFilesExceeded,
                     // previewTemplate: previewTemplate,
                     // autoQueue: false, // Make sure the files aren't queued until manually added
                     // previewsContainer: "#previews", // Define the container to display the previews

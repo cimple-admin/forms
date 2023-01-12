@@ -13,6 +13,8 @@ class FileUploader extends Component
     private string $dictFallbackMessage = '您的浏览器不支持拖放文件上传。';
     private string $dictFileTooBig = '文件太大 ({{filesize}}MiB). 最大文件大小: {{maxFilesize}}MiB.';
     private string $dictInvalidFileType = '您不能上传这种类型的文件。';
+    private string $dictResponseError = '服务器响应 {{statusCode}} 代码。';
+    private string $dictMaxFilesExceeded = '最多上传{{maxFiles}}个文件。';
     private string $uploadUrl;
 
     public function chunkSize(int $chunkSize): static
@@ -100,6 +102,30 @@ class FileUploader extends Component
         return $this;
     }
 
+    /**
+     * 服务器上传错误提示
+     * @param $dictResponseError
+     * @return $this
+     */
+    public function dictResponseError($dictResponseError): static
+    {
+        $this->dictResponseError = $dictResponseError;
+
+        return $this;
+    }
+
+    /**
+     * 最多上传文件数错误提示
+     * @param $dictMaxFilesExceeded
+     * @return $this
+     */
+    public function dictMaxFilesExceeded($dictMaxFilesExceeded): static
+    {
+        $this->dictMaxFilesExceeded = $dictMaxFilesExceeded;
+
+        return $this;
+    }
+
     public function build(): array
     {
         $params = parent::build();
@@ -111,6 +137,8 @@ class FileUploader extends Component
         $params['dictFallbackMessage'] = $this->dictFallbackMessage;
         $params['dictFileTooBig'] = $this->dictFileTooBig;
         $params['dictInvalidFileType'] = $this->dictInvalidFileType;
+        $params['dictResponseError'] = $this->dictResponseError;
+        $params['dictMaxFilesExceeded'] = $this->dictMaxFilesExceeded;
 
         return $params;
     }
