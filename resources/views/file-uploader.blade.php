@@ -52,12 +52,20 @@
                     forceChunking: true,
                     chunkSize: @this.chunkSize,
                     maxFilesize: @this.maxFileSize,
-                    maxFiles: @this.maxFiles
+                    maxFiles: @this.maxFiles,
+                    dictFallbackMessage: @this.dictFallbackMessage,
+                    dictFileTooBig: @this.dictFileTooBig,
+                    dictInvalidFileType: $this.dictInvalidFileType,
                     // previewTemplate: previewTemplate,
                     // autoQueue: false, // Make sure the files aren't queued until manually added
                     // previewsContainer: "#previews", // Define the container to display the previews
                     // clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
                 })
+
+                myDropzone.on("error", function (file, message) {
+                    toastr.error(message);
+                    this.removeFile(file);
+                });
 
                 // myDropzone.on("addedfile", function (file) {
                 //     // Hookup the start button
