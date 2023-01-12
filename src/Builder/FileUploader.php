@@ -103,7 +103,8 @@ class FileUploader extends Component
     }
 
     /**
-     * 服务器上传错误提示
+     * 服务器上传错误提示.
+     *
      * @param $dictResponseError
      * @return $this
      */
@@ -115,7 +116,8 @@ class FileUploader extends Component
     }
 
     /**
-     * 最多上传文件数错误提示
+     * 最多上传文件数错误提示.
+     *
      * @param $dictMaxFilesExceeded
      * @return $this
      */
