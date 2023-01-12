@@ -62,7 +62,8 @@ class FileUploader extends Component
     }
 
     /**
-     * 浏览器不支持拖拽错误信息
+     * 浏览器不支持拖拽错误信息.
+     *
      * @param $dictFallbackMessage
      * @return $this
      */
@@ -74,7 +75,8 @@ class FileUploader extends Component
     }
 
     /**
-     * 上传文件超过限制大小错误信息
+     * 上传文件超过限制大小错误信息.
+     *
      * @param $dictFileTooBig
      * @return $this
      */
@@ -86,7 +88,8 @@ class FileUploader extends Component
     }
 
     /**
-     * 未验证的文件类型
+     * 未验证的文件类型.
+     *
      * @param $dictInvalidFileType
      * @return $this
      */
