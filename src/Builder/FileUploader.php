@@ -131,7 +131,8 @@ class FileUploader extends Component
     }
 
     /**
-     * 设置前段访问删除文件的时候同步删除后端的文件
+     * 设置前段访问删除文件的时候同步删除后端的文件.
+     *
      * @param $removeFileOnServer
      * @return $this
      */
@@ -143,7 +144,8 @@ class FileUploader extends Component
     }
 
     /**
-     * 设置删除文件的url，默认的url未经过任何认证，慎用。也许后期会更新
+     * 设置删除文件的url，默认的url未经过任何认证，慎用。也许后期会更新.
+     *
      * @param $deleteUrl
      * @return $this
      */
