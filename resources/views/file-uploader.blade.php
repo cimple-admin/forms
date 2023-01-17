@@ -7,41 +7,7 @@
                 <button class="btn btn-primary btn-sm" type="button">{{$buttonText}}</button>
             </div>
         </div>
-        <div>
-            <div id="template" class="row">
-                <!-- This is used as the file preview template -->
-
-                <div class="col row">
-                    <div class="preview col-md-auto"><img data-dz-thumbnail/></div>
-                    <div class="col">
-                        <p class="name" data-dz-name></p>
-                        <strong class="error text-danger" data-dz-errormessage></strong>
-                    </div>
-                </div>
-                <div class="col">
-                    <p class="size" data-dz-size></p>
-                    <div
-                            class="progress active"
-                            aria-valuemin="0"
-                            aria-valuemax="100"
-                            aria-valuenow="0"
-                    >
-                        <div
-                                class="progress-bar progress-bar-striped progress-bar-animated progress-bar-success"
-                                style="width: 0%"
-                                role="progressbar"
-                                data-dz-uploadprogress
-                        ></div>
-                    </div>
-                </div>
-                <div class="col-md-auto">
-                    <button type="button" data-dz-remove class="btn btn-danger delete">
-                        <i class="glyphicon glyphicon-trash"></i>
-                        <span>Delete</span>
-                    </button>
-                </div>
-            </div>
-        </div>
+        @include('form::file-uploader-preview')
         @include('form::base.errors')
         @include('form::base.hint')
     </div>
@@ -85,8 +51,8 @@
 
                 var myDropzone = new Dropzone('#testUpload', { // Make the whole body a dropzone
                     url: @this.uploadUrl, // Set the url
-                    thumbnailWidth: 80,
-                    thumbnailHeight: 80,
+                    thumbnailWidth: 60,
+                    thumbnailHeight: 60,
                     parallelUploads: 20,
                     chunking: true,
                     forceChunking: true,
