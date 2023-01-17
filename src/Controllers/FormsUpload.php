@@ -3,7 +3,6 @@
 namespace CimpleAdmin\Forms\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class FormsUpload
 {
@@ -17,16 +16,12 @@ class FormsUpload
             $file = $request->file('file');
             $explodeOriginFileName = explode('.', $file->getClientOriginalName());
             $fileExt = '';
-            if (isset($explodeOriginFileName[1])) {
-                $fileExt = $explodeOriginFileName[1];
+            if (count($explodeOriginFileName) >= 2) {
+                $fileExt = $explodeOriginFileName[count($explodeOriginFileName) - 1];
             }
-            // 先将所有分块集中存储
-            if ($chunkIndex == 0) {
-                $uploadSuccess = Storage::put('upload/'.$fileName.($fileExt ? ('.'.$fileExt) : ''), $file->get());
-            } else {
-                $uploadSuccess = Storage::append('upload/'.$fileName.($fileExt ? ('.'.$fileExt) : ''), $file->get(),
-                    null);
-            }
+            $fileResource = fopen(storage_path('app').'/upload/'.$fileName.($fileExt ? ('.'.$fileExt) : ''), 'a+');
+            $uploadSuccess = fwrite($fileResource, $file->get());
+            fclose($fileResource);
         }
         if ($uploadSuccess) {
             return response()->json('success', 200);

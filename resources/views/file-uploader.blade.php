@@ -76,6 +76,17 @@
                     this.removeFile(file);
                 });
 
+
+                myDropzone.on("removedfile", function (file) {
+                    console.log(file)
+                    if (@this.
+                    removeFileOnServer
+                )
+                    {
+
+                    }
+                })
+
                 // myDropzone.on("addedfile", function (file) {
                 //     // Hookup the start button
                 //     file.previewElement.querySelector(".start").onclick = function () {
