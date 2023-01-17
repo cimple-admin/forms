@@ -23,7 +23,7 @@ class FormsUpload
             if (count($explodeOriginFileName) >= 2) {
                 $fileExt = $explodeOriginFileName[count($explodeOriginFileName) - 1];
             }
-            if ( ! file_exists(storage_path('app').'/public/upload/')) {
+            if (! file_exists(storage_path('app').'/public/upload/')) {
                 mkdir(storage_path('app').'/public/upload/', 0777, true);
             }
             $fileResource = fopen(storage_path('app').'/public/upload/'.$fileName.($fileExt ? ('.'.$fileExt) : ''),
