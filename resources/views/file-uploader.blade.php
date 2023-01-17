@@ -76,14 +76,20 @@
                     this.removeFile(file);
                 });
 
+                myDropzone.on("success", function (file) {
+                    file.url = file.xhr.responseText
+                });
 
                 myDropzone.on("removedfile", function (file) {
                     console.log(file)
+                    console.log(@this.removeFileOnServer
+                )
                     if (@this.
-                    removeFileOnServer
+                    removeFileOnServer == 1
                 )
                     {
-
+                        $.post(@this.deleteUrl, {url: file.url}
+                    )
                     }
                 })
 

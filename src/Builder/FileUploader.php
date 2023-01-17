@@ -16,6 +16,8 @@ class FileUploader extends Component
     private string $dictResponseError = '服务器响应 {{statusCode}} 代码。';
     private string $dictMaxFilesExceeded = '最多上传{{maxFiles}}个文件。';
     private string $uploadUrl;
+    private string $deleteUrl = '/cimple-admin/form/file/delete';
+    private bool $removeFileOnServer = false;
 
     public function chunkSize(int $chunkSize): static
     {
@@ -128,6 +130,30 @@ class FileUploader extends Component
         return $this;
     }
 
+    /**
+     * 设置前段访问删除文件的时候同步删除后端的文件
+     * @param $removeFileOnServer
+     * @return $this
+     */
+    public function removeFileOnServer($removeFileOnServer): static
+    {
+        $this->removeFileOnServer = $removeFileOnServer;
+
+        return $this;
+    }
+
+    /**
+     * 设置删除文件的url，默认的url未经过任何认证，慎用。也许后期会更新
+     * @param $deleteUrl
+     * @return $this
+     */
+    public function deleteUrl($deleteUrl): static
+    {
+        $this->deleteUrl = $deleteUrl;
+
+        return $this;
+    }
+
     public function build(): array
     {
         $params = parent::build();
@@ -141,6 +167,8 @@ class FileUploader extends Component
         $params['dictInvalidFileType'] = $this->dictInvalidFileType;
         $params['dictResponseError'] = $this->dictResponseError;
         $params['dictMaxFilesExceeded'] = $this->dictMaxFilesExceeded;
+        $params['deleteUrl'] = $this->deleteUrl;
+        $params['removeFileOnServer'] = $this->removeFileOnServer;
 
         return $params;
     }
