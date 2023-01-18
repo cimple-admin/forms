@@ -1,12 +1,17 @@
 <div class="form-group {{ $inline ? 'row' : '' }}">
     @include('form::base.label')
-    <div class="{{ $inline ? 'col-sm-10' : '' }}">
-        <div id="testUpload" class="dropzone">
+    <div id="uploadArea{{$property}}" class="{{ $inline ? 'col-sm-10' : '' }}">
+        <div id="uploadContainer{{$property}}" class="dropzone">
             <div class="dz-default dz-message">
                 <ion-icon class="upload-icon" name="cloud-upload-outline"></ion-icon>
                 <button class="btn btn-primary btn-sm" type="button">{{$buttonText}}</button>
             </div>
         </div>
+        @if($autoUpload ==  false)
+            <div class="float-right mt-1">
+                <button id="uploadBtn" class="btn btn-primary btn-sm" type="button">上传</button>
+            </div>
+        @endif
         @include('form::file-uploader-preview')
         @include('form::base.errors')
         @include('form::base.hint')
@@ -45,6 +50,14 @@
                 .upload-preview p {
                     margin-bottom: 0;
                 }
+
+                #uploadBtn {
+                    display: none;
+                }
+
+                #uploadBtn.show {
+                    display: block;
+                }
             </style>
         @endpush
         @push('scripts')
@@ -67,7 +80,7 @@
                 var previewTemplate = previewNode.parentNode.innerHTML
                 previewNode.parentNode.removeChild(previewNode)
 
-                var myDropzone = new Dropzone('#testUpload', { // Make the whole body a dropzone
+                var myDropzone = new Dropzone('#uploadContainer{{$property}}', { // Make the whole body a dropzone
                     url: @this.uploadUrl, // Set the url
                     thumbnailWidth: 500,
                     thumbnailHeight: 500,
@@ -83,6 +96,7 @@
                     dictInvalidFileType: @this.dictInvalidFileType,
                     dictResponseError: @this.dictResponseError,
                     dictMaxFilesExceeded: @this.dictMaxFilesExceeded,
+                    autoProcessQueue: @this.autoUpload,
                     // previewTemplate: previewTemplate,
                     // autoQueue: false, // Make sure the files aren't queued until manually added
                     // previewsContainer: "#previews", // Define the container to display the previews
@@ -102,6 +116,15 @@
                         }
                     }
                     file.url = file.xhr.responseText
+
+                    if (@this.
+                    autoUpload == false && myDropzone.getQueuedFiles().length <= 0
+                )
+                    {
+                        // 隐藏按钮
+                        console.log(document.querySelector('#uploadArea{{$property}}'));
+                        document.querySelector('#uploadArea{{$property}}').querySelector('#uploadBtn').classList.remove('show')
+                    }
                 });
 
                 myDropzone.on("removedfile", function (file) {
@@ -115,14 +138,31 @@
                         $.post(@this.deleteUrl, {url: file.url}
                     )
                     }
+                    console.log(file.previewElement)
+
+                    if (@this.
+                    autoUpload == false && myDropzone.getQueuedFiles().length <= 0
+                )
+                    {
+                        // 隐藏按钮
+                        console.log(document.querySelector('#uploadArea{{$property}}'));
+                        document.querySelector('#uploadArea{{$property}}').querySelector('#uploadBtn').classList.remove('show')
+                    }
                 })
 
-                // myDropzone.on("addedfile", function (file) {
-                //     // Hookup the start button
-                //     file.previewElement.querySelector(".start").onclick = function () {
-                //         myDropzone.enqueueFile(file)
-                //     }
-                // })
+                myDropzone.on("addedfile", function (file) {
+                    if (@this.
+                    autoUpload == false && file.previewElement
+                )
+                    {
+                        // 显示上传按钮
+                        file.previewElement.parentNode.parentNode.querySelector('#uploadBtn').classList.add('show')
+                    }
+                })
+
+                $('#uploadArea{{$property}} #uploadBtn').click(function () {
+                    myDropzone.processQueue();
+                });
                 //
                 // // Update the total progress bar
                 // myDropzone.on("totaluploadprogress", function(progress) {

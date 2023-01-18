@@ -16,6 +16,6 @@ class FileUploader extends BaseComponent
     public string $dictMaxFilesExceeded;
     public string $deleteUrl;
     public string $removeFileOnServer;
-
+    public bool $autoUpload;
     protected string $viewName = 'form::file-uploader';
 }

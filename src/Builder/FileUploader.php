@@ -18,6 +18,7 @@ class FileUploader extends Component
     private string $uploadUrl;
     private string $deleteUrl = '/cimple-admin/form/file/delete';
     private bool $removeFileOnServer = false;
+    private bool $autoUpload = true;
 
     public function chunkSize(int $chunkSize): static
     {
@@ -156,6 +157,18 @@ class FileUploader extends Component
         return $this;
     }
 
+    /**
+     * 是否开启自动上传
+     * @param $autoUpload
+     * @return $this
+     */
+    public function autoUpload($autoUpload): static
+    {
+        $this->autoUpload = $autoUpload;
+
+        return $this;
+    }
+
     public function build(): array
     {
         $params = parent::build();
@@ -171,6 +184,7 @@ class FileUploader extends Component
         $params['dictMaxFilesExceeded'] = $this->dictMaxFilesExceeded;
         $params['deleteUrl'] = $this->deleteUrl;
         $params['removeFileOnServer'] = $this->removeFileOnServer;
+        $params['autoUpload'] = $this->autoUpload;
 
         return $params;
     }
