@@ -45,18 +45,22 @@ trait HasFormTrait
     {
         if (property_exists($this, $name)) {
             $this->$name = $value;
-            try {
-                $this->validateOnly($name);
-            } catch (ValidationException $e) {
-                $this->disableSubmitBtn = true;
-                throw $e;
-            }
+            $allRules = $this->rules();
+            if ($allRules) {
+                try {
+                    $this->validateOnly($name);
+                } catch (ValidationException $e) {
+                    $this->disableSubmitBtn = true;
+                    throw $e;
+                }
 
-            try {
-                $this->validate();
-            } catch (ValidationException $e) {
-                $this->disableSubmitBtn = true;
-                throw $e;
+
+                try {
+                    $this->validate();
+                } catch (ValidationException $e) {
+                    $this->disableSubmitBtn = true;
+                    throw $e;
+                }
             }
 
             $this->disableSubmitBtn = false;
