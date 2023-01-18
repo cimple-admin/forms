@@ -19,6 +19,7 @@
                     border: 1px dashed #ced4da;
                     border-radius: 4px;
                     min-height: 206px;
+                    padding: 0;
                 }
 
                 ion-icon.upload-icon {
@@ -30,6 +31,19 @@
 
                 .dz-success .upload-finish {
                     display: none;
+                }
+
+                .dz-image-preview img {
+                    width: 60px;
+                    width: 60px;
+                }
+
+                .upload-preview {
+                    padding: 10px;
+                }
+
+                .upload-preview p {
+                    margin-bottom: 0;
                 }
             </style>
         @endpush
@@ -82,8 +96,10 @@
 
                 myDropzone.on("success", function (file) {
                     if (file.previewElement) {
-                        console.log(file.previewElement.childNodes);
                         file.previewElement.childNodes[5].classList.add("upload-finish");
+                        if (file.previewElement.childNodes[3].childNodes[1].childNodes[1].childNodes[0].src) {
+                            file.previewElement.childNodes[3].childNodes[1].childNodes[1].childNodes[0].classList.add("col");
+                        }
                     }
                     file.url = file.xhr.responseText
                 });

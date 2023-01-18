@@ -1,12 +1,13 @@
 <div>
-    <div id="template" class="row border-bottom pb-1 align-middle">
+    <div id="template" class="row border-bottom upload-preview">
         <!-- This is used as the file preview template -->
-
-        <div class="col row">
-            <div class="preview col-md-auto pl-0 pr-0"><img style="width: 60px;height: 60px;" data-dz-thumbnail/></div>
-            <div class="col pl-0">
-                <p class="name" data-dz-name></p>
-                <strong class="error text-danger" data-dz-errormessage></strong>
+        <div class="col">
+            <div class="row">
+                <div class="col preview col-md-auto pl-0 pr-0"><img data-dz-thumbnail/></div>
+                <div class="col pl-0 align-items-center text-info">
+                    <div class="col name align-middle" data-dz-name></div>
+                    <div class="col error text-danger align-middle" data-dz-errormessage>fdsafdsa</div>
+                </div>
             </div>
         </div>
         <div class="col">
