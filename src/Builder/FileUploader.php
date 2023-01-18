@@ -158,7 +158,8 @@ class FileUploader extends Component
     }
 
     /**
-     * 是否开启自动上传
+     * 是否开启自动上传.
+     *
      * @param $autoUpload
      * @return $this
      */
