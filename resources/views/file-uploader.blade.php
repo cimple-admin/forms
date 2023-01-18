@@ -51,8 +51,8 @@
 
                 var myDropzone = new Dropzone('#testUpload', { // Make the whole body a dropzone
                     url: @this.uploadUrl, // Set the url
-                    thumbnailWidth: 60,
-                    thumbnailHeight: 60,
+                    thumbnailWidth: 500,
+                    thumbnailHeight: 500,
                     parallelUploads: 20,
                     chunking: true,
                     forceChunking: true,

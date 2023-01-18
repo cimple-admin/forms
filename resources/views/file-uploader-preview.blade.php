@@ -3,7 +3,7 @@
         <!-- This is used as the file preview template -->
 
         <div class="col row">
-            <div class="preview col-md-auto pl-0 pr-0"><img data-dz-thumbnail/></div>
+            <div class="preview col-md-auto pl-0 pr-0"><img style="width: 60px;height: 60px;" data-dz-thumbnail/></div>
             <div class="col pl-0">
                 <p class="name" data-dz-name></p>
                 <strong class="error text-danger" data-dz-errormessage></strong>
