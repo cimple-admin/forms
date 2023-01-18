@@ -4,9 +4,9 @@
         <div class="col">
             <div class="row">
                 <div class="col preview col-md-auto pl-0 pr-0"><img data-dz-thumbnail/></div>
-                <div class="col pl-0 align-items-center text-info">
+                <div class="col pl-0 align-items-center">
                     <div class="col name align-middle" data-dz-name></div>
-                    <div class="col error text-danger align-middle" data-dz-errormessage>fdsafdsa</div>
+                    <div class="col error text-danger align-middle" data-dz-errormessage></div>
                 </div>
             </div>
         </div>
