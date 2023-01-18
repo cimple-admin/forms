@@ -27,6 +27,10 @@
                     display: block;
                     margin: 0 auto;
                 }
+
+                .dz-success .upload-finish {
+                    display: none;
+                }
             </style>
         @endpush
         @push('scripts')
@@ -77,6 +81,10 @@
                 });
 
                 myDropzone.on("success", function (file) {
+                    if (file.previewElement) {
+                        console.log(file.previewElement.childNodes);
+                        file.previewElement.childNodes[5].classList.add("upload-finish");
+                    }
                     file.url = file.xhr.responseText
                 });
 
