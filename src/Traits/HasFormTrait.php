@@ -54,7 +54,6 @@ trait HasFormTrait
                     throw $e;
                 }
 
-
                 try {
                     $this->validate();
                 } catch (ValidationException $e) {
