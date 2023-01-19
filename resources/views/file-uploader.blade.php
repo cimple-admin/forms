@@ -1,11 +1,12 @@
 <div class="form-group {{ $inline ? 'row' : '' }}">
     @include('form::base.label')
-    <div id="uploadArea{{$property}}" class="{{ $inline ? 'col-sm-10' : '' }}">
+    <div wire:ignore id="uploadArea{{$property}}" class="{{ $inline ? 'col-sm-10' : '' }}">
         <div id="uploadContainer{{$property}}" class="dropzone">
             <div class="dz-default dz-message">
                 <ion-icon class="upload-icon" name="cloud-upload-outline"></ion-icon>
                 <button class="btn btn-primary btn-sm" type="button">{{$buttonText}}</button>
             </div>
+            {{--            这下面输出的是图片预览--}}
         </div>
         @if($autoUpload ==  false)
             <div class="float-right mt-1">
@@ -70,11 +71,6 @@
                 Dropzone.autoDiscover = false
 
                 // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
-                // var previewNode = document.querySelector("#template")
-                // previewNode.id = ""
-                // var previewTemplate = previewNode.parentNode.innerHTML
-                // previewNode.parentNode.removeChild(previewNode)
-
                 var previewNode = document.querySelector('#template')
                 previewNode.id = ''
                 var previewTemplate = previewNode.parentNode.innerHTML
@@ -109,20 +105,25 @@
                 });
 
                 myDropzone.on("success", function (file) {
+                    // console.log(file.previewElement.childNodes);
                     if (file.previewElement) {
                         file.previewElement.childNodes[5].classList.add("upload-finish");
                         if (file.previewElement.childNodes[3].childNodes[1].childNodes[1].childNodes[0].src) {
                             file.previewElement.childNodes[3].childNodes[1].childNodes[1].childNodes[0].classList.add("col");
                         }
+                        file.previewElement.childNodes[7].childNodes[1].value = file.xhr.responseText;
                     }
                     file.url = file.xhr.responseText
-
+                    document.querySelectorAll('fileUrl{{$property}}')
+                    const els = document.querySelectorAll('.fileUrl{{$property}}');
+                    const values = [].map.call(els, el => el.value);
+                    @this.
+                    value = values;
                     if (@this.
                     autoUpload == false && myDropzone.getQueuedFiles().length <= 0
                 )
                     {
                         // 隐藏按钮
-                        console.log(document.querySelector('#uploadArea{{$property}}'));
                         document.querySelector('#uploadArea{{$property}}').querySelector('#uploadBtn').classList.remove('show')
                     }
                 });

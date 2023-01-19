@@ -27,6 +27,7 @@
             </div>
         </div>
         <div class="col-md-auto d-flex align-items-center">
+            <input class="fileUrl{{$property}}" type="hidden" value="">
             <button type="button" data-dz-remove class="btn btn-danger delete">
                 <i class="glyphicon glyphicon-trash"></i>
                 <span>Delete</span>
