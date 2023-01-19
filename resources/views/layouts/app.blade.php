@@ -2,6 +2,7 @@
     <title>@yield('title')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="{{asset('vendor/forms/alpine/aplinejs.min.js')}}"></script>
     @livewireStyles
     <link rel="stylesheet" href="{{asset('/vendor/forms/admin-lte/plugins/fontawesome-free/css/all.css')}}">
     <link rel="stylesheet" href="{{asset('/vendor/forms/admin-lte/plugins/toastr/toastr.min.css')}}">

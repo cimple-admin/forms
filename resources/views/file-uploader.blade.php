@@ -1,12 +1,15 @@
 <div class="form-group {{ $inline ? 'row' : '' }}">
     @include('form::base.label')
     <div wire:ignore id="uploadArea{{$property}}" class="{{ $inline ? 'col-sm-10' : '' }}">
-        <div id="uploadContainer{{$property}}" class="dropzone">
+        <div id="uploadContainer{{$property}}" @class(['dropzone', 'dz-started' => $value])>
             <div class="dz-default dz-message">
                 <ion-icon class="upload-icon" name="cloud-upload-outline"></ion-icon>
                 <button class="btn btn-primary btn-sm" type="button">{{$buttonText}}</button>
             </div>
             {{--            这下面输出的是图片预览--}}
+            @foreach($value as $val)
+                @include('form::file-uploader-preview', ['url' => $val, 'isExist' => true])
+            @endforeach
         </div>
         @if($autoUpload ==  false)
             <div class="float-right mt-1">
@@ -46,10 +49,6 @@
 
                 .upload-preview {
                     padding: 10px;
-                }
-
-                .upload-preview p {
-                    margin-bottom: 0;
                 }
 
                 #uploadBtn {
@@ -114,11 +113,7 @@
                         file.previewElement.childNodes[7].childNodes[1].value = file.xhr.responseText;
                     }
                     file.url = file.xhr.responseText
-                    document.querySelectorAll('fileUrl{{$property}}')
-                    const els = document.querySelectorAll('.fileUrl{{$property}}');
-                    const values = [].map.call(els, el => el.value);
-                    @this.
-                    value = values;
+                    updateValue();
                     if (@this.
                     autoUpload == false && myDropzone.getQueuedFiles().length <= 0
                 )
@@ -128,10 +123,23 @@
                     }
                 });
 
-                myDropzone.on("removedfile", function (file) {
-                    console.log(file)
-                    console.log(@this.removeFileOnServer
+                myDropzone.removeFile = function (file) {
+                    if (file.status === Dropzone.UPLOADING) {
+                        myDropzone.cancelUpload(file);
+                    }
+                    myDropzone.files = this.files.filter((item) => item !== file).map((item) => item)
+                    //myDropzone.without(this.files, file);
+
+                    myDropzone.emit("removedfile", file);
+                    // if (this.files.length === 0) {
+                    //     return this.emit("reset");
+                    // }
+
+                    console.log(@this.value
                 )
+                }
+
+                myDropzone.on("removedfile", function (file) {
                     if (@this.
                     removeFileOnServer == 1
                 )
@@ -150,14 +158,12 @@
                         document.querySelector('#uploadArea{{$property}}').querySelector('#uploadBtn').classList.remove('show')
                     }
 
-                    document.querySelectorAll('fileUrl{{$property}}')
-                    const els = document.querySelectorAll('.fileUrl{{$property}}');
-                    const values = [].map.call(els, el => el.value);
-                    @this.
-                    value = values;
+                    updateValue();
                 })
 
                 myDropzone.on("addedfile", function (file) {
+                    document.getElementById('uploadContainer{{$property}}').classList.add('dz-started');
+
                     if (@this.
                     autoUpload == false && file.previewElement
                 )
@@ -198,7 +204,31 @@
                 //     myDropzone.removeAllFiles(true)
                 // }
                 // DropzoneJS Demo Code End
+
+
             })
+
+            function removeExistFile(ele) {
+                // 移除区域
+                ele.parentNode.parentNode.parentNode.removeChild(ele.parentNode.parentNode);
+                // 更新url变量
+                updateValue();
+            }
+
+            function updateValue() {
+                document.querySelectorAll('fileUrl{{$property}}')
+                const els = document.querySelectorAll('.fileUrl{{$property}}');
+                const values = [].map.call(els, el => el.value);
+                @this.
+                value = values;
+                // 是否显示上传按钮
+                console.log(values);
+                if (values.length <= 0) {
+                    document.getElementById('uploadContainer{{$property}}').classList.remove('dz-started');
+                } else {
+                    document.getElementById('uploadContainer{{$property}}').classList.add('dz-started');
+                }
+            }
         </script>
     @endpush
 </div>

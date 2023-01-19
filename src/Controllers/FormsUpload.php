@@ -32,7 +32,7 @@ class FormsUpload
             fclose($fileResource);
         }
         if ($uploadSuccess) {
-            return response(asset('/storage/upload/'.$fileName.($fileExt ? ('.'.$fileExt) : '')), 200);
+            return response($fileName.($fileExt ? ('.'.$fileExt) : ''), 200);
         } else {
             return response('error', 400);
         }
