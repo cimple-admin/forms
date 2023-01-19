@@ -9,7 +9,7 @@
         </div>
         @if($autoUpload ==  false)
             <div class="float-right mt-1">
-                <button id="uploadBtn" class="btn btn-primary btn-sm" type="button">上传</button>
+                <button id="uploadBtn" class="btn btn-primary" type="button">上传</button>
             </div>
         @endif
         @include('form::file-uploader-preview')
