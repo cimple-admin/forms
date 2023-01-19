@@ -149,6 +149,12 @@
                         console.log(document.querySelector('#uploadArea{{$property}}'));
                         document.querySelector('#uploadArea{{$property}}').querySelector('#uploadBtn').classList.remove('show')
                     }
+
+                    document.querySelectorAll('fileUrl{{$property}}')
+                    const els = document.querySelectorAll('.fileUrl{{$property}}');
+                    const values = [].map.call(els, el => el.value);
+                    @this.
+                    value = values;
                 })
 
                 myDropzone.on("addedfile", function (file) {
