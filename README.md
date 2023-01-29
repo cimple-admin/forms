@@ -4,7 +4,7 @@
 
 前端基于 [AdminLTE](https://adminlte.io/)
 
-[![Security Status](https://www.murphysec.com/platform3/v3/badge/1611441299463372800.svg)](https://www.murphysec.com/accept?code=5607fe9d76703e206fe71e9aa0f45ca1&type=1&from=2&t=2)
+[![Security Status](https://www.murphysec.com/platform3/v3/badge/1611441299463372800.svg?t=1)](https://www.murphysec.com/accept?code=5607fe9d76703e206fe71e9aa0f45ca1&type=1&from=2&t=2)
 
 ### 如何使用
 
