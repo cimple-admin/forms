@@ -93,5 +93,16 @@ trait HasFormTrait
         return $rules;
     }
 
+    /**
+     * 这里使用是为了处理初始化的时候就验证一下把初始值的错误信息显示出来。
+     * 如果自己将来在组件中需要自己实现一份 mount 方法，且需要初始化就验证错误的时候就可以吧这方法复制一份，然后在实现自己的逻辑
+     *
+     * @return void
+     */
+    public function mount(): void
+    {
+        $this->validate();
+    }
+
     abstract public function getForm();
 }
