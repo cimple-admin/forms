@@ -101,8 +101,10 @@ trait HasFormTrait
      */
     public function mount(): void
     {
-        $this->validate();
+        if ($this->rules()) {
+            $this->validate();
+        }
     }
 
-    abstract public function getForm();
+    abstract public function getForm(): array;
 }
