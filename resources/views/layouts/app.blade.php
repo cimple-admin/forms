@@ -1,3 +1,5 @@
+<!doctype html>
+<html>
 <head>
     <title>@yield('title')</title>
     <meta charset="utf-8">
@@ -22,3 +24,4 @@
 <script src="{{asset('/vendor/forms/admin-lte/plugins/toastr/toastr.min.js')}}"></script>
 @stack('scripts')
 </body>
+</html>
