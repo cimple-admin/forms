@@ -69,7 +69,8 @@ abstract class Component
     }
 
     /**
-     * 单行表单设置label 宽度，最大支持数值支持10，保证输入区有位置
+     * 单行表单设置label 宽度，最大支持数值支持10，保证输入区有位置.
+     *
      * @param $width
      * @return $this
      */
