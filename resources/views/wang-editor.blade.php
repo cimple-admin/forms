@@ -1,6 +1,6 @@
 <div class="form-group {{ $inline ? 'row' : '' }}">
     @include('form::base.label')
-    <div class="{{ $inline ? 'col-sm-10' : '' }}">
+    <div class="{{ $inline ? 'col-sm-' . (12 - $inlineLabelWidth) : '' }}">
         <div id="editor—wrapper-{{$property}}" class="editor—wrapper" wire:ignore>
             <div wire:ignore.self class="toolbar-container" id="toolbar-container-{{$property}}"><!-- 工具栏 --></div>
             <div wire:ignore.self class="editor-container" id="editor-container-{{$property}}"><!-- 编辑器 --></div>

@@ -1,6 +1,6 @@
 <div class="form-group {{ $inline ? 'row' : '' }}">
     @include('form::base.label')
-    <div wire:ignore  class="{{ $inline ? 'col-sm-10' : '' }}">
+    <div wire:ignore class="{{ $inline ? 'col-sm-' . (12 - $inlineLabelWidth) : '' }}">
         <select wire:ignore.self class="select select-primary w-full"
                 data-trigger
                 id="choices-multiple-default"

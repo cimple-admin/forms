@@ -68,8 +68,20 @@ abstract class Component
         return $this;
     }
 
+    /**
+     * 单行表单设置label 宽度，最大支持数值支持10，保证输入区有位置
+     * @param $width
+     * @return $this
+     */
     public function inlineLabelWidth($width): static
     {
+        if ($width > 10) {
+            $width = 10;
+        } else {
+            if ($width < 1) {
+                $width = 1;
+            }
+        }
         $this->inlineLabelWidth = $width;
 
         return $this;

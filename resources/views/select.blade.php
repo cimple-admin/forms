@@ -1,6 +1,6 @@
 <div class="form-group  {{ $inline ? 'row' : '' }}">
     @include('form::base.label')
-    <div class="{{ $inline ? 'col-sm-10' : '' }}">
+    <div class="{{ $inline ? 'col-sm-' . (12 - $inlineLabelWidth) : '' }}">
         <select wire:model="value" class="custom-select">
             <option>请选择</option>
             @foreach($options as $optionValue => $option)

@@ -1,6 +1,6 @@
 <div class="form-group {{ $inline ? 'row' : '' }}">
     @include('form::base.label')
-    <div wire:ignore id="uploadArea{{$property}}" class="{{ $inline ? 'col-sm-10' : '' }}">
+    <div wire:ignore id="uploadArea{{$property}}" class="{{ $inline ? 'col-sm-' . (12 - $inlineLabelWidth) : '' }}">
         <div id="uploadContainer{{$property}}" @class(['dropzone', 'dz-started' => $value])>
             <div class="dz-default dz-message">
                 <ion-icon class="upload-icon" name="cloud-upload-outline"></ion-icon>

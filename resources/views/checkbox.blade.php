@@ -1,6 +1,6 @@
 <div class="form-group {{ $inline ? 'row' : '' }}">
     @include('form::base.label')
-    <div class="{{ $inline ? 'col-sm-10' : '' }}">
+    <div class="{{ $inline ? 'col-sm-' . (12 - $inlineLabelWidth) : '' }}">
         @foreach($options as $optionValue => $option)
             <div class="custom-control  {{$type == 'toggle' ? 'custom-switch' : 'custom-checkbox'}}">
                 <input type="checkbox" wire:model="value" value="{{$optionValue}}"
