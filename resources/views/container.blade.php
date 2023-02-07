@@ -5,6 +5,6 @@
                 $form = explode(':', $form)[0];
             }
         @endphp
-        @livewire($form, $params, key($loop->index))
+        @livewire($form, $params, key($params['property'] . '-' . $params['value']))
     @endforeach
 </div>

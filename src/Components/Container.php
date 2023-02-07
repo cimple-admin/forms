@@ -30,7 +30,7 @@ class Container implements Htmlable
             if (isset($component->$property)) {
                 $componentParams['value'] = $component->$property;
             }
-            $forms[$builder::COMPONENT_NAME.':'.$builder->getLabel()] = $componentParams;
+            $forms[$builder::COMPONENT_NAME.':'.$builder->getProperty()] = $componentParams;
         }
 
         return new self($forms);
