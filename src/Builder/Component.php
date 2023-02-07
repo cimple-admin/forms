@@ -17,6 +17,7 @@ abstract class Component
     protected bool $hiddenLabel = false;
 
     protected bool $inline = false;
+    protected int $inlineLabelWidth = 2;
 
     public function __construct($property)
     {
@@ -67,6 +68,13 @@ abstract class Component
         return $this;
     }
 
+    public function inlineLabelWidth($width): static
+    {
+        $this->inlineLabelWidth = $width;
+
+        return $this;
+    }
+
     public function build(): array
     {
         return [
@@ -77,6 +85,7 @@ abstract class Component
             'value' => $this->value ?? '',
             'hiddenLabel' => $this->hiddenLabel,
             'inline' => $this->inline,
+            'inlineLabelWidth' => $this->inlineLabelWidth,
         ];
     }
 }

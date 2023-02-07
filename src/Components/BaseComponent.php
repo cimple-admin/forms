@@ -17,6 +17,8 @@ class BaseComponent extends Component
     public string $placeHolder; // 表单的 placeHolder
     public bool $hiddenLabel = false; // 是否隐藏表单的名称显示
     public bool $inline = false; // 表单是否已横向方式显示
+
+    public int $inlineLabelWidth = 2; // 单行表单 label 宽度
     protected string $viewName = ''; // 组件绑定的视图名称
 
     /**
