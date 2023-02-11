@@ -10,4 +10,13 @@
         @include('form::base.hint')
     </div>
 </div>
+@once
+    @push('scripts')
+        <script>
+            Livewire.on('update{{ucfirst($property)}}', value => {
+                $('input[name="{{$property}}"]').val(value)
+            })
+        </script>
+    @endpush
+@endonce
 

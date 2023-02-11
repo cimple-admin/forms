@@ -4,6 +4,7 @@
             if (str_contains($form, ':')) {
                 $form = explode(':', $form)[0];
             }
+            $this->emit('update' . ucfirst($params['property']), $params['value']);
         @endphp
         @livewire($form, $params, key($params['property'] ))
     @endforeach
