@@ -4,7 +4,7 @@
         @foreach($options as $optionValue => $option)
             <div class="custom-control  {{$type == 'toggle' ? 'custom-switch' : 'custom-checkbox'}}">
                 <input type="checkbox" wire:model="value" value="{{$optionValue}}"
-                       class="custom-control-input  {{ $errors->has('value') ? 'is-invalid' : '' }} {{ $errors->has('value.*') ? 'is-invalid' : '' }}"
+                       class="custom-control-input  {{  ($errors && ($errors->has($property) || $errors->has('value'))) ? 'is-invalid' : '' }} {{ $errors->has('value.*') ? 'is-invalid' : '' }}"
                        id="checkBox-{{$property}}-{{$optionValue}}">
                 <label class="custom-control-label" for="checkBox-{{$property}}-{{$optionValue}}">{{$option}}</label>
             </div>
