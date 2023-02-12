@@ -14,7 +14,14 @@
     @push('scripts')
         <script>
             Livewire.on('update{{ucfirst($property)}}', value => {
-                $('input[name="{{$property}}"]').val(value)
+                {{--                @this.value = value--}}
+                if (@this.
+                value != value
+            )
+                {
+                    @this.
+                    value = value
+                }
             })
         </script>
     @endpush
