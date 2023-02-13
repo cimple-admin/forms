@@ -12,21 +12,5 @@
     </div>
 
 </div>
+@include('form::base.update-event')
 
-@once
-    @push('scripts')
-        <script>
-            Livewire.on('update{{ucfirst($property)}}', value => {
-                {{--                @this.value = value--}}
-                if (@this.
-                value != value
-            )
-                {
-                    @this.
-                    value = value
-                }
-
-            })
-        </script>
-    @endpush
-@endonce

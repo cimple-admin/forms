@@ -42,7 +42,7 @@ class BaseComponent extends Component
      * @param $propertyName
      * @return void
      */
-    public function updated($propertyName)
+    public function updatedValue()
     {
         if ($this->notifyParentUpdate) {
             if ($this->property) {
@@ -50,8 +50,8 @@ class BaseComponent extends Component
             }
         }
 
-        $this->validateOnly($propertyName);
-        $this->validateOnly($propertyName.'.*');
+        $this->validateOnly('value');
+        $this->validateOnly('value.*');
     }
 
     /**
