@@ -7,3 +7,5 @@
         @include('form::base.hint')
     </div>
 </div>
+
+@include('form::base.update-event')

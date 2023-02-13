@@ -1,23 +1,21 @@
-@once
-    @push('scripts')
-        <script>
-            document.addEventListener('livewire:load', function () {
-                Livewire.on('update{{ucfirst($property)}}', value => {
-                    if (@this.
-                    value !== value
-                )
-                    {
+@push('scripts')
+    <script>
+        document.addEventListener('livewire:load', function () {
+            Livewire.on('update{{ucfirst($property)}}', value => {
+                if (@this.
+                value !== value
+            )
+                {
+                    @this.
+                    notifyParentUpdate = false
+                            @this.value = value
+                    setTimeout(function () {
                         @this.
-                        notifyParentUpdate = false
-                                @this.value = value
-                        setTimeout(function () {
-                            @this.
-                            notifyParentUpdate = true
+                        notifyParentUpdate = true
 
-                        }, 100)
-                    }
-                })
+                    }, 30)
+                }
             })
-        </script>
-    @endpush
-@endonce
+        })
+    </script>
+@endpush
