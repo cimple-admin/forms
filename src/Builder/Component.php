@@ -91,7 +91,7 @@ abstract class Component
 
     /**
      * 由于某些组件基本上就是父传子，基本不需要来来回同步，所以加上这个选项
-     * 也可以正常使用 session flash message
+     * 也可以正常使用 session flash message.
      *
      * @param $notify
      * @return $this
