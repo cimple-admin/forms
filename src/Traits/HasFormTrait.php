@@ -6,6 +6,8 @@ use CimpleAdmin\Forms\Builder\Component;
 use CimpleAdmin\Forms\Components\Container;
 use Illuminate\Validation\ValidationException;
 use Livewire\Exceptions\PropertyNotFoundException;
+use ReflectionException;
+use ReflectionProperty;
 
 trait HasFormTrait
 {
@@ -98,11 +100,20 @@ trait HasFormTrait
      * 如果自己将来在组件中需要自己实现一份 mount 方法，且需要初始化就验证错误的时候就可以吧这方法复制一份，然后在实现自己的逻辑.
      *
      * @return void
+     * @throws ReflectionException
      */
     public function mount(): void
     {
-        if ($this->rules()) {
-            $this->validate();
+        if ($allRules = $this->rules()) {
+//            dd($allRules);
+            $needValidateRules = [];
+            foreach ($allRules as $key => $rule) {
+                $rp = new ReflectionProperty(get_class($this), $key);
+                if ($rp->isInitialized($this) && $this->$key) {
+                    $needValidateRules[$key] = $rule;
+                }
+            }
+            $this->validate($needValidateRules);
         }
     }
 
