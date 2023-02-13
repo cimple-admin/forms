@@ -18,6 +18,7 @@ abstract class Component
 
     protected bool $inline = false;
     protected int $inlineLabelWidth = 2;
+    protected bool $notifyParentUpdate = true;
 
     public function __construct($property)
     {
@@ -88,6 +89,20 @@ abstract class Component
         return $this;
     }
 
+    /**
+     * 由于某些组件基本上就是父传子，基本不需要来来回同步，所以加上这个选项
+     * 也可以正常使用 session flash message
+     *
+     * @param $notify
+     * @return $this
+     */
+    public function notifyParentUpdate($notify): static
+    {
+        $this->notifyParentUpdate = $notify;
+
+        return $this;
+    }
+
     public function build(): array
     {
         return [
@@ -99,6 +114,7 @@ abstract class Component
             'hiddenLabel' => $this->hiddenLabel,
             'inline' => $this->inline,
             'inlineLabelWidth' => $this->inlineLabelWidth,
+            'notifyParentUpdate' => $this->notifyParentUpdate,
         ];
     }
 }

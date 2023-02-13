@@ -19,6 +19,7 @@ class BaseComponent extends Component
     public bool $inline = false; // 表单是否已横向方式显示
 
     public int $inlineLabelWidth = 2; // 单行表单 label 宽度
+    public bool $notifyParentUpdate = true; // 通知父组件更新值
     protected string $viewName = ''; // 组件绑定的视图名称
 
     /**
@@ -43,9 +44,12 @@ class BaseComponent extends Component
      */
     public function updated($propertyName)
     {
-        if ($this->property) {
-            $this->emitUp('updateEvent', $this->property, $this->value);
+        if ($this->notifyParentUpdate) {
+            if ($this->property) {
+                $this->emitUp('updateEvent', $this->property, $this->value);
+            }
         }
+
         $this->validateOnly($propertyName);
         $this->validateOnly($propertyName.'.*');
     }
