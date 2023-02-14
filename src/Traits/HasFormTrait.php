@@ -106,7 +106,6 @@ trait HasFormTrait
     public function mount(): void
     {
         if ($allRules = $this->rules()) {
-//            dd($allRules);
             $needValidateRules = [];
             foreach ($allRules as $key => $rule) {
                 $rp = new ReflectionProperty(get_class($this), $key);
@@ -114,7 +113,9 @@ trait HasFormTrait
                     $needValidateRules[$key] = $rule;
                 }
             }
-            $this->validate($needValidateRules);
+            if ($needValidateRules) {
+                $this->validate($needValidateRules);
+            }
         }
     }
 
